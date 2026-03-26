@@ -3,315 +3,681 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智学伴侣 - 测试版</title>
+    <title>智学伴侣 - 每日学习打卡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; }
-
-        #welcomeScreen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        #welcomeScreen.hidden { display: none !important; }
-
-        .role-card {
-            background: white;
-            color: #333;
-            padding: 30px 50px;
-            margin: 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-
-        .role-card:hover { transform: scale(1.05); }
-
-        #mainApp { display: none; padding: 20px; }
-        #mainApp.active { display: block; }
-
-        .header {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .btn {
-            padding: 12px 24px;
-            margin: 5px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .btn-primary { background: #4F46E5; color: white; }
-        .btn-success { background: #10B981; color: white; }
-        .btn:hover { opacity: 0.9; }
-
-        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .nav-tab {
-            padding: 10px 20px;
-            border: none;
-            background: #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .nav-tab.active { background: #4F46E5; color: white; }
-
-        .content-area { display: none; }
-        .content-area.active { display: block; }
-
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px;
-            display: inline-block;
-            min-width: 150px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .checkin-btn {
-            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-            color: white;
-            border: none;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 20px;
-            cursor: pointer;
-            margin: 20px;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%);min-height:100vh}
+        #welcomeScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;padding:20px}
+        #welcomeScreen.hidden{display:none!important}
+        .welcome-logo{width:100px;height:100px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px;font-size:50px}
+        .welcome-title{font-size:3rem;font-weight:700;margin-bottom:15px}
+        .welcome-subtitle{font-size:1.2rem;opacity:0.9;margin-bottom:40px}
+        .role-cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+        .role-card{background:white;color:#333;padding:40px 50px;border-radius:20px;cursor:pointer;transition:all 0.3s;min-width:220px}
+        .role-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,0.3)}
+        .role-card-icon{font-size:48px;margin-bottom:15px}
+        #mainApp{display:none;padding:20px;max-width:1200px;margin:0 auto}
+        #mainApp.active{display:block!important}
+        .header{background:white;padding:20px 30px;border-radius:15px;margin-bottom:25px;box-shadow:0 4px 15px rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .header h1{font-size:1.8rem;color:#4F46E5}
+        .btn{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;transition:all 0.2s}
+        .btn-primary{background:#4F46E5;color:white}.btn-success{background:#10B981;color:white}.btn-danger{background:#EF4444;color:white}.btn-secondary{background:#6B7280;color:white}
+        .nav-tabs{display:flex;gap:8px;margin-bottom:25px;flex-wrap:wrap;background:white;padding:10px;border-radius:12px}
+        .nav-tab{padding:10px 18px;border:none;background:transparent;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;color:#666}
+        .nav-tab:hover{background:#f3f4f6;color:#4F46E5}.nav-tab.active{background:#4F46E5;color:white}
+        .content-area{display:none}.content-area.active{display:block}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:30px}
+        .stat-card{background:white;padding:25px;border-radius:15px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+        .stat-value{font-size:2.5rem;font-weight:700;margin-bottom:5px}.stat-label{color:#666;font-size:0.95rem}
+        .checkin-section{background:white;padding:40px;border-radius:20px;text-align:center;margin-bottom:25px}
+        .checkin-btn{background:linear-gradient(135deg,#10B981 0%,#34D399 100%);color:white;border:none;padding:25px 60px;border-radius:50px;font-size:1.4rem;font-weight:700;cursor:pointer}
+        .task-list{background:white;border-radius:15px;padding:25px}
+        .task-item{padding:18px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:15px}
+        .task-item:last-child{border-bottom:none}
+        .task-checkbox{width:28px;height:28px;border:2px solid #d1d5db;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+        .task-checkbox.completed{background:#10B981;border-color:#10B981;color:white}
+        .task-info{flex:1}.task-points{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:4px 12px;border-radius:15px;font-size:0.85rem;font-weight:600}
+        .plan-card{background:white;padding:20px;border-radius:15px;margin-bottom:15px}
+        .plan-badge{padding:4px 12px;border-radius:15px;font-size:0.85rem}
+        .progress-bar{height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden;margin:10px 0}
+        .progress-fill{height:100%;background:linear-gradient(90deg,#4F46E5,#818CF8);border-radius:5px}
+        .knowledge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+        .knowledge-card{background:white;padding:20px;border-radius:15px;cursor:pointer;transition:all 0.2s}
+        .knowledge-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.12)}
+        .unit-list{margin-top:15px;max-height:200px;overflow-y:auto}
+        .unit-item{padding:10px;background:#f9fafb;border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s}
+        .unit-item:hover{background:#e5e7eb}
+        .unit-item.selected{background:#dbeafe;border:2px solid #4F46E5}
+        .achievement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+        .achievement-card{background:white;padding:25px;border-radius:15px;text-align:center}
+        .achievement-card.locked{opacity:0.5;filter:grayscale(1)}
+        .shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+        .shop-card{background:white;padding:25px;border-radius:15px;text-align:center}
+        .child-card{background:white;padding:20px;border-radius:15px;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center}
+        .child-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);color:white;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;padding:20px}
+        .modal.active{display:flex;justify-content:center;align-items:center}
+        .modal-content{background:white;padding:30px;border-radius:20px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto}
+        .form-group{margin-bottom:15px}.form-group label{display:block;margin-bottom:5px;font-weight:500}.form-group input,.form-group select{width:100%;padding:10px 15px;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem}
+        .checkin-result{margin-top:20px;padding:15px;border-radius:10px}
+        .checkin-result.success{background:#D1FAE5;color:#065F46}.checkin-result.already{background:#FEF3C7;color:#92400E}
+        .learning-content{background:#f9fafb;padding:15px;border-radius:10px;margin-top:10px;font-size:0.9rem}
+        .quiz-option{padding:12px;background:white;border:2px solid #e5e7eb;border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s}
+        .quiz-option:hover{border-color:#4F46E5}
+        .quiz-option.correct{background:#d1fae5;border-color:#10B981}
+        .quiz-option.wrong{background:#fee2e2;border-color:#EF4444}
+        .quiz-input{width:100%;padding:10px;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem}
+        .grade-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:15px;background:white;border-radius:12px}
+        .grade-filter select{padding:8px 15px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px}
+        @media(max-width:768px){.welcome-title{font-size:2rem}.header{flex-direction:column;text-align:center}.stats-grid{grid-template-columns:repeat(2,1fr)}}
     </style>
 </head>
 <body>
-    <div id="welcomeScreen">
-        <h1 style="font-size: 3rem; margin-bottom: 20px;">智学伴侣</h1>
-        <p style="font-size: 1.2rem; margin-bottom: 40px;">每日学习打卡，陪伴孩子成长</p>
-        <div>
-            <div class="role-card" onclick="selectRole('parent')">
-                <h2>我是家长</h2>
-                <p>管理孩子，定制学习计划</p>
-            </div>
-            <div class="role-card" onclick="selectRole('student')">
-                <h2>我是学生</h2>
-                <p>每日打卡，学习知识</p>
-            </div>
-        </div>
+<div id="welcomeScreen">
+    <div class="welcome-logo">&#127890;</div>
+    <h1 class="welcome-title">智学伴侣</h1>
+    <p class="welcome-subtitle">每日学习打卡，陪伴孩子成长</p>
+    <div class="role-cards">
+        <div class="role-card" onclick="selectRole('parent')"><div class="role-card-icon">&#128104;&#128105;&#128103;</div><h2>我是家长</h2><p>管理孩子，定制学习计划</p></div>
+        <div class="role-card" onclick="selectRole('student')"><div class="role-card-icon">&#128104;&#127996;</div><h2>我是学生</h2><p>每日打卡，学习知识</p></div>
     </div>
-
-    <div id="mainApp">
-        <div class="header">
-            <h1>智学伴侣 - 每日学习打卡</h1>
-            <p>欢迎, <span id="userName">用户</span> | <span id="userRole">角色</span></p>
-            <button class="btn btn-primary" onclick="logout()">退出登录</button>
+</div>
+<div id="mainApp">
+    <div class="header">
+        <div><h1>&#127890; 智学伴侣</h1><p>欢迎, <span id="userName">用户</span> | <span id="userRole">角色</span></p></div>
+        <div style="display:flex;gap:10px;align-items:center"><span id="userBadge" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:8px 16px;border-radius:20px">Lv.1</span><button class="btn btn-secondary" onclick="logout()">退出</button></div>
+    </div>
+    <div class="nav-tabs">
+        <button class="nav-tab active" onclick="switchTab(this,'dashboard')">&#128202; 仪表盘</button>
+        <button class="nav-tab" onclick="switchTab(this,'checkin')">&#10004; 打卡</button>
+        <button class="nav-tab" onclick="switchTab(this,'plans')">&#128203; 计划</button>
+        <button class="nav-tab" onclick="switchTab(this,'knowledge')">&#128218; 知识库</button>
+        <button class="nav-tab" onclick="switchTab(this,'quiz')">&#128221; 学习测试</button>
+        <button class="nav-tab" onclick="switchTab(this,'achievements')">&#127942; 成就</button>
+        <button class="nav-tab" onclick="switchTab(this,'shop')">&#128722; 商店</button>
+        <button class="nav-tab" onclick="switchTab(this,'children')">&#128118; 孩子</button>
+    </div>
+    <div class="content-area active" id="dashboard">
+        <div class="stats-grid">
+            <div class="stat-card"><div style="font-size:36px">&#128293;</div><div class="stat-value" id="streakDays" style="color:#F59E0B">0</div><div class="stat-label">连续打卡</div></div>
+            <div class="stat-card"><div style="font-size:36px">&#11088;</div><div class="stat-value" id="totalPoints" style="color:#10B981">0</div><div class="stat-label">总积分</div></div>
+            <div class="stat-card"><div style="font-size:36px">&#127941;</div><div class="stat-value" id="userLevel" style="color:#4F46E5">Lv.1</div><div class="stat-label">等级</div></div>
+            <div class="stat-card"><div style="font-size:36px">&#128218;</div><div class="stat-value" id="completedUnits" style="color:#EF4444">0</div><div class="stat-label">已学单元</div></div>
         </div>
-
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="switchTab(this, 'dashboard')">仪表盘</button>
-            <button class="nav-tab" onclick="switchTab(this, 'checkin')">每日打卡</button>
-            <button class="nav-tab" onclick="switchTab(this, 'plans')">学习计划</button>
-            <button class="nav-tab" onclick="switchTab(this, 'children')">孩子管理</button>
+        <h2 style="margin-bottom:15px">&#128203; 今日学习任务</h2>
+        <div class="task-list" id="taskList"></div>
+    </div>
+    <div class="content-area" id="checkin">
+        <div class="checkin-section"><h2 style="margin-bottom:20px">&#127919; 每日打卡</h2><button class="checkin-btn" onclick="doCheckin()">&#10024; 立即打卡</button><div id="checkinResult"></div></div>
+        <h3 style="margin-bottom:15px">&#128197; 打卡记录</h3>
+        <div class="task-list" id="checkinHistory"></div>
+    </div>
+    <div class="content-area" id="plans">
+        <div style="display:flex;justify-content:space-between;margin-bottom:20px"><h2>&#128203; 学习计划</h2><div style="display:flex;gap:10px"><button class="btn btn-success" onclick="openPlanModal()">&#10133; 创建计划</button><button class="btn btn-primary" onclick="generateSmartPlan()">&#129504; 智能生成</button></div></div>
+        <div id="planList"></div>
+    </div>
+    <div class="content-area" id="knowledge">
+        <h2 style="margin-bottom:20px">&#128218; 知识库</h2>
+        <div class="grade-filter">
+            <select id="filterGrade"><option value="0">全部年级</option><option value="1-6">小学(1-6年级)</option><option value="7-9">初中(7-9年级)</option><option value="10-12">高中(10-12年级)</option></select>
+            <select id="filterSubject"><option value="">全部学科</option><option value="语文">语文</option><option value="数学">数学</option><option value="英语">英语</option><option value="物理">物理</option><option value="化学">化学</option><option value="生物">生物</option><option value="历史">历史</option><option value="地理">地理</option><option value="道德与法治">道德与法治</option></select>
+            <select id="filterSemester"><option value="">全部学期</option><option value="1">上学期</option><option value="2">下学期</option></select>
+            <button class="btn btn-primary" onclick="renderKnowledge()">筛选</button>
         </div>
+        <div id="knowledgeContent"></div>
+    </div>
+    <div class="content-area" id="quiz">
+        <h2 style="margin-bottom:20px">&#128221; 学习测试</h2>
+        <p style="color:#666;margin-bottom:20px">根据学习计划自动生成的测试题</p>
+        <div id="quizContent"></div>
+    </div>
+    <div class="content-area" id="achievements"><h2 style="margin-bottom:20px">&#127942; 成就徽章</h2><div class="achievement-grid" id="achievementList"></div></div>
+    <div class="content-area" id="shop"><h2 style="margin-bottom:20px">&#128722; 积分商店</h2><div class="shop-grid" id="shopList"></div></div>
+    <div class="content-area" id="children">
+        <div style="display:flex;justify-content:space-between;margin-bottom:20px"><h2>&#128118; 孩子管理</h2><button class="btn btn-success" onclick="openAddChildModal()">&#10133; 添加孩子</button></div>
+        <div id="childList"></div>
+    </div>
+</div>
+<div class="modal" id="childModal">
+    <div class="modal-content"><h2 id="childModalTitle" style="margin-bottom:20px">添加孩子</h2>
+        <div class="form-group"><label>昵称 *</label><input type="text" id="childName" placeholder="请输入孩子昵称"></div>
+        <div class="form-group"><label>年级</label><select id="childGrade"><option value="1">小学一年级</option><option value="2">小学二年级</option><option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option><option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option><option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option></select></div>
+        <div class="form-group"><label>当前学期</label><select id="childSemester"><option value="1">上学期</option><option value="2">下学期</option></select></div>
+        <div class="form-group"><label>年龄</label><input type="number" id="childAge" placeholder="请输入年龄" min="6" max="18"></div>
+        <button class="btn btn-primary" style="width:100%" onclick="saveChild()">保存</button>
+        <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closeChildModal()">取消</button>
+    </div>
+</div>
+<div class="modal" id="planModal">
+    <div class="modal-content"><h2 style="margin-bottom:20px">创建学习计划</h2>
+        <div class="form-group"><label>计划名称 *</label><input type="text" id="planName" placeholder="例如：五年级英语下学期"></div>
+        <div class="form-group"><label>学科</label><select id="planSubject"><option value="语文">语文</option><option value="数学">数学</option><option value="英语">英语</option><option value="物理">物理</option><option value="化学">化学</option><option value="生物">生物</option><option value="历史">历史</option><option value="地理">地理</option><option value="道德与法治">道德与法治</option></select></div>
+        <div class="form-group"><label>年级</label><select id="planGrade"><option value="1">小学一年级</option><option value="2">小学二年级</option><option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option><option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option><option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option></select></div>
+        <div class="form-group"><label>学期</label><select id="planSemester"><option value="1">上学期</option><option value="2">下学期</option></select></div>
+        <div class="form-group"><label>每日学习单元数</label><input type="number" id="dailyUnits" value="2" min="1" max="5"></div>
+        <div class="form-group"><label>学习周期（天）</label><input type="number" id="planDays" value="30" min="7" max="90"></div>
+        <button class="btn btn-primary" style="width:100%" onclick="createPlan()">创建</button>
+        <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closePlanModal()">取消</button>
+    </div>
+</div>
+<script>
+const knowledgeDB = {
+    "语文_1_1": {name:"一年级语文上册",units:[
+        {id:"U1",name:"拼音入门",items:[
+            {type:"word",question:"a",answer:"单韵母a",points:3},
+            {type:"word",question:"o",answer:"单韵母o",points:3},
+            {type:"word",question:"e",answer:"单韵母e",points:3}
+        ]},
+        {id:"U2",name:"生字学习",items:[
+            {type:"word",question:"一",answer:"数字一",points:3},
+            {type:"word",question:"二",answer:"数字二",points:3},
+            {type:"word",question:"三",answer:"数字三",points:3}
+        ]}
+    ]},
+    "数学_1_1": {name:"一年级数学上册",units:[
+        {id:"U1",name:"数一数",items:[
+            {type:"calc",question:"1+1=?",answer:"2",points:4},
+            {type:"calc",question:"2+3=?",answer:"5",points:4}
+        ]},
+        {id:"U2",name:"比大小",items:[
+            {type:"concept",question:"3和5哪个大?",answer:"5",points:4}
+        ]}
+    ]},
+    "英语_3_1": {name:"三年级英语上册",units:[
+        {id:"U1",name:"Hello",items:[
+            {type:"word",question:"hello",answer:"你好",points:4},
+            {type:"word",question:"hi",answer:"嗨",points:4}
+        ]},
+        {id:"U2",name:"Colours",items:[
+            {type:"word",question:"red",answer:"红色",points:4},
+            {type:"word",question:"blue",answer:"蓝色",points:4},
+            {type:"word",question:"yellow",answer:"黄色",points:4}
+        ]}
+    ]}
+};
 
-        <div class="content-area active" id="dashboard">
-            <div style="margin-bottom: 20px;">
-                <div class="stat-card">
-                    <h3>连续打卡</h3>
-                    <p style="font-size: 2rem; color: #4F46E5;" id="streakDays">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>积分</h3>
-                    <p style="font-size: 2rem; color: #10B981;" id="totalPoints">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>等级</h3>
-                    <p style="font-size: 2rem; color: #F59E0B;" id="userLevel">Lv.1</p>
+const achievementsList = [
+    {id:'first',icon:'1',title:'初次打卡',desc:'完成首次打卡',req:1},
+    {id:'week',icon:'7',title:'一周坚持',desc:'连续7天',req:7},
+    {id:'points100',icon:'100',title:'初露锋芒',desc:'100积分',req:100,type:'points'},
+    {id:'level5',icon:'5',title:'五级学者',desc:'达到5级',req:5,type:'level'}
+];
+
+const shopItems = [
+    {id:'avatar1',icon:'A',title:'头像框A',price:100,type:'avatar'},
+    {id:'theme1',icon:'T',title:'深色主题',price:500,type:'theme'}
+];
+
+const gradeNames = ["小学一年级","小学二年级","小学三年级","小学四年级","小学五年级","小学六年级","初中一年级","初中二年级","初中三年级","高中一年级","高中二年级","高中三年级"];
+
+let appState = {currentUser:null,role:null,children:[],plans:[],achievements:[],tasks:[]};
+
+function loadData(){
+    const saved=localStorage.getItem('studyAppData');
+    if(saved){
+        try{appState={...appState,...JSON.parse(saved)};}catch(e){}
+    }
+    if(appState.currentUser){
+        document.getElementById('welcomeScreen').classList.add('hidden');
+        document.getElementById('mainApp').classList.add('active');
+        updateDashboard();
+        renderTasks();
+        renderCheckinHistory();
+        renderPlanList();
+        renderKnowledge();
+        renderAchievements();
+        renderShop();
+        renderChildList();
+    }
+}
+
+function selectRole(role){
+    const name=prompt('请输入您的名称:');
+    if(!name||!name.trim()) return;
+    appState.role=role;
+    appState.currentUser=name.trim();
+    if(role==='student'){
+        appState.children=[{id:Date.now(),name:name.trim(),grade:5,semester:2,age:11,points:0,level:1,exp:0,streak:0,completedUnits:0,avatar:name.trim().charAt(0)}];
+    }
+    saveData();
+    showMainApp();
+}
+
+function saveData(){
+    localStorage.setItem('studyAppData',JSON.stringify(appState));
+}
+
+function showMainApp(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainApp').classList.add('active');
+    document.getElementById('userName').textContent=appState.currentUser;
+    document.getElementById('userRole').textContent=appState.role==='parent'?'家长':'学生';
+    updateDashboard();
+    renderTasks();
+    renderCheckinHistory();
+    renderPlanList();
+    renderKnowledge();
+    renderAchievements();
+    renderShop();
+    renderChildList();
+}
+
+function updateDashboard(){
+    const child=appState.children[0]||{};
+    document.getElementById('streakDays').textContent=child.streak||0;
+    document.getElementById('totalPoints').textContent=child.points||0;
+    document.getElementById('userLevel').textContent='Lv.'+(child.level||1);
+    document.getElementById('completedUnits').textContent=child.completedUnits||0;
+    document.getElementById('userBadge').textContent='Lv.'+(child.level||1);
+}
+
+function switchTab(el,tabId){
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.content-area').forEach(c=>c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+    if(tabId==='knowledge') renderKnowledge();
+    if(tabId==='quiz') renderQuiz();
+    if(tabId==='achievements') renderAchievements();
+    if(tabId==='shop') renderShop();
+}
+
+function doCheckin(){
+    const child=appState.children[0];
+    if(!child){alert('请先添加孩子');return;}
+    const today=new Date().toDateString();
+    const already=appState.tasks.some(t=>t.date===today&&t.type==='checkin');
+    if(already){
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result already">今日已打卡！</div>';
+        return;
+    }
+    appState.tasks.push({date:today,type:'checkin',points:10});
+    child.streak=(child.streak||0)+1;
+    const points=10+Math.min(child.streak*2,20);
+    child.points=(child.points||0)+points;
+    child.exp=(child.exp||0)+points;
+    if(child.exp>=100){
+        child.level=(child.level||1)+1;
+        child.exp=child.exp-100;
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功！+'+points+'积分 恭喜升级到Lv.'+child.level+'!</div>';
+    }else{
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功！+'+points+'积分</div>';
+    }
+    saveData();
+    updateDashboard();
+    renderCheckinHistory();
+}
+
+function renderCheckinHistory(){
+    const container=document.getElementById('checkinHistory');
+    const checkins=appState.tasks.filter(t=>t.type==='checkin').slice(-10).reverse();
+    if(checkins.length===0){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无打卡记录</p>';return;}
+    let html='';
+    checkins.forEach(c=>{
+        const d=new Date(c.date);
+        html+=`<div class="task-item">
+            <div class="task-checkbox completed">&#10004;</div>
+            <div class="task-info">
+                <div style="font-weight:500">${d.getMonth()+1}月${d.getDate()}日</div>
+                <div style="font-size:0.85rem;color:#666">连续打卡${appState.children[0]?.streak||0}天</div>
+            </div>
+            <span class="task-points">+${c.points||10}</span>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
+
+function renderTasks(){
+    const child=appState.children[0];
+    const container=document.getElementById('taskList');
+    if(!child||appState.plans.length===0){
+        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无学习任务，请先创建学习计划</p>';
+        return;
+    }
+    const plan=appState.plans.find(p=>p.active);
+    if(!plan){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无进行中的学习任务</p>';return;}
+    const key=plan.subject+'_'+plan.grade+'_'+plan.semester;
+    const data=knowledgeDB[key];
+    if(!data){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">该课程暂无可用内容</p>';return;}
+    let html='';
+    data.units.slice(0,5).forEach((unit,idx)=>{
+        const isCompleted=idx<(plan.completedUnits||0);
+        html+=`<div class="task-item">
+            <div class="task-checkbox ${isCompleted?'completed':''}">${isCompleted?'&#10004;':''}</div>
+            <div class="task-info">
+                <div style="font-weight:500">${unit.name}</div>
+                <div style="font-size:0.85rem;color:#666">${plan.subject} | ${unit.items.length}个知识点</div>
+            </div>
+            <span class="task-points">${isCompleted?'&#10004;':'+'}${unit.items.length*5}</span>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
+
+function openAddChildModal(){
+    appState.editingChildId=null;
+    document.getElementById('childModalTitle').textContent='添加孩子';
+    document.getElementById('childName').value='';
+    document.getElementById('childGrade').value='5';
+    document.getElementById('childSemester').value='2';
+    document.getElementById('childAge').value='11';
+    document.getElementById('childModal').classList.add('active');
+}
+
+function closeChildModal(){
+    document.getElementById('childModal').classList.remove('active');
+}
+
+function saveChild(){
+    const name=document.getElementById('childName').value.trim();
+    const grade=document.getElementById('childGrade').value;
+    const semester=document.getElementById('childSemester').value;
+    const age=document.getElementById('childAge').value;
+    if(!name){alert('请输入昵称');return;}
+    if(appState.editingChildId){
+        const c=appState.children.find(x=>x.id===appState.editingChildId);
+        if(c){c.name=name;c.grade=parseInt(grade);c.semester=parseInt(semester);c.age=parseInt(age)||0;c.avatar=name.charAt(0);}
+    }else{
+        appState.children.push({id:Date.now(),name,grade:parseInt(grade),semester:parseInt(semester),age:parseInt(age)||0,points:0,level:1,exp:0,streak:0,completedUnits:0,avatar:name.charAt(0)});
+    }
+    saveData();
+    renderChildList();
+    closeChildModal();
+    alert('保存成功！');
+}
+
+function editChild(id){
+    const c=appState.children.find(x=>x.id===id);
+    if(!c) return;
+    appState.editingChildId=id;
+    document.getElementById('childModalTitle').textContent='编辑孩子';
+    document.getElementById('childName').value=c.name;
+    document.getElementById('childGrade').value=c.grade||5;
+    document.getElementById('childSemester').value=c.semester||2;
+    document.getElementById('childAge').value=c.age||11;
+    document.getElementById('childModal').classList.add('active');
+}
+
+function deleteChild(id){
+    if(!confirm('确定删除?')) return;
+    appState.children=appState.children.filter(c=>c.id!==id);
+    saveData();
+    renderChildList();
+}
+
+function renderChildList(){
+    const container=document.getElementById('childList');
+    if(appState.children.length===0){
+        container.innerHTML='<p style="text-align:center;color:#666;padding:40px">暂无孩子档案，点击上方"添加孩子"创建</p>';
+        return;
+    }
+    let html='';
+    appState.children.forEach(c=>{
+        html+=`<div class="child-card">
+            <div style="display:flex;align-items:center;gap:15px">
+                <div class="child-avatar">${c.avatar||c.name.charAt(0)}</div>
+                <div>
+                    <h3>${c.name}</h3>
+                    <div style="font-size:0.9rem;color:#666">${gradeNames[c.grade-1]||'未设'} ${c.semester===1?'上':'下'}学期 | ${c.age?c.age+'岁':''}</div>
+                    <div style="font-size:0.85rem;color:#F59E0B;margin-top:5px">积分:${c.points} | Lv.${c.level} | 连续:${c.streak}天 | 单元:${c.completedUnits||0}</div>
                 </div>
             </div>
-        </div>
+            <div>
+                <button class="btn btn-primary" onclick="editChild(${c.id})">编辑</button>
+                <button class="btn btn-danger" onclick="deleteChild(${c.id})">删除</button>
+            </div>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
 
-        <div class="content-area" id="checkin">
-            <h2>每日打卡</h2>
-            <button class="checkin-btn" onclick="doCheckin()">立即打卡</button>
-            <div id="checkinStatus"></div>
-        </div>
+function openPlanModal(){
+    document.getElementById('planName').value='';
+    document.getElementById('planSubject').value='英语';
+    document.getElementById('planGrade').value='5';
+    document.getElementById('planSemester').value='2';
+    document.getElementById('dailyUnits').value='2';
+    document.getElementById('planDays').value='30';
+    document.getElementById('planModal').classList.add('active');
+}
 
-        <div class="content-area" id="plans">
-            <h2>学习计划</h2>
-            <button class="btn btn-success" onclick="generatePlan()">生成计划</button>
-            <div id="planList"></div>
-        </div>
+function closePlanModal(){
+    document.getElementById('planModal').classList.remove('active');
+}
 
-        <div class="content-area" id="children">
-            <h2>孩子管理</h2>
-            <button class="btn btn-success" onclick="addChild()">添加孩子</button>
-            <div id="childList"></div>
-        </div>
-    </div>
+function createPlan(){
+    const name=document.getElementById('planName').value.trim();
+    const subject=document.getElementById('planSubject').value;
+    const grade=parseInt(document.getElementById('planGrade').value);
+    const semester=parseInt(document.getElementById('planSemester').value);
+    const dailyUnits=parseInt(document.getElementById('dailyUnits').value)||2;
+    const days=parseInt(document.getElementById('planDays').value)||30;
+    const planName=name||gradeNames[grade-1]+subject+(semester===1?'上':'下')+'学期学习计划';
+    const plan={id:Date.now(),name:planName,subject,grade,semester,dailyUnits,days,active:true,completedUnits:0,startDate:new Date().toISOString().split('T')[0]};
+    if(appState.plans.length>0) appState.plans.forEach(p=>p.active=false);
+    appState.plans.push(plan);
+    saveData();
+    renderPlanList();
+    renderTasks();
+    closePlanModal();
+    alert('计划创建成功！');
+}
 
-    <script>
-        let appState = {
-            currentUser: null,
-            role: null,
-            children: [],
-            plans: [],
-            checkins: [],
-            points: 0,
-            level: 1
-        };
+function generateSmartPlan(){
+    const child=appState.children[0];
+    if(!child){alert('请先添加孩子');return;}
+    const subjects=['语文','数学','英语'];
+    const subject=subjects[Math.floor(Math.random()*subjects.length)];
+    document.getElementById('planName').value='';
+    document.getElementById('planSubject').value=subject;
+    document.getElementById('planGrade').value=child.grade||5;
+    document.getElementById('planSemester').value=child.semester||2;
+    document.getElementById('planDays').value='30';
+    openPlanModal();
+}
 
-        function loadData() {
-            const saved = localStorage.getItem('studyAppData');
-            if (saved) {
-                try {
-                    appState = {...appState, ...JSON.parse(saved)};
-                    if (appState.currentUser) {
-                        document.getElementById('welcomeScreen').classList.add('hidden');
-                        document.getElementById('mainApp').classList.add('active');
-                        updateDashboard();
-                        renderChildList();
-                    }
-                } catch(e) {}
-            }
+function renderPlanList(){
+    const container=document.getElementById('planList');
+    if(appState.plans.length===0){
+        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无学习计划，点击上方按钮创建</p>';
+        return;
+    }
+    let html='';
+    appState.plans.forEach(p=>{
+        const badgeColor=p.active?'#10B981':'#6B7280';
+        html+=`<div class="plan-card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <h3>${p.name}</h3>
+                    <div style="font-size:0.9rem;color:#666">${gradeNames[p.grade-1]} ${p.semester===1?'上':'下'}学期 | 每天${p.dailyUnits}个单元 | ${p.days}天</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:${Math.min((p.completedUnits||0)*10,100)}%"></div></div>
+                </div>
+                <span class="plan-badge" style="background:${badgeColor};color:white">${p.active?'进行中':'已暂停'}</span>
+            </div>
+            <button class="btn ${p.active?'btn-secondary':'btn-primary'}" style="margin-top:10px" onclick="setActivePlan(${p.id})">${p.active?'已选':'开始'}</button>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
+
+function setActivePlan(id){
+    appState.plans.forEach(p=>p.active=p.id===id);
+    saveData();
+    renderPlanList();
+    renderTasks();
+}
+
+function renderKnowledge(){
+    const container=document.getElementById('knowledgeContent');
+    const filterGrade=document.getElementById('filterGrade').value;
+    const filterSubject=document.getElementById('filterSubject').value;
+    const filterSemester=document.getElementById('filterSemester').value;
+    let html='<div class="knowledge-grid">';
+    for(const[key,data]of Object.entries(knowledgeDB)){
+        const[subject,gradeStr,semesterStr]=key.split('_');
+        const grade=parseInt(gradeStr);
+        const semester=parseInt(semesterStr);
+        if(filterSubject&&filterSubject!==subject)continue;
+        if(filterGrade){
+            if(filterGrade==='1-6'&&(grade<1||grade>6))continue;
+            if(filterGrade==='7-9'&&(grade<7||grade>9))continue;
+            if(filterGrade==='10-12'&&(grade<10||grade>12))continue;
         }
+        if(filterSemester&&filterSemester!=semester)continue;
+        html+=`<div class="knowledge-card" onclick="showUnits('${key}')">
+            <h3>${data.name}</h3>
+            <p style="color:#666;font-size:0.9rem;margin-top:5px">${data.units.length}个单元</p>
+        </div>`;
+    }
+    html+='</div>';
+    container.innerHTML=html;
+}
 
-        function selectRole(role) {
-            const name = prompt('请输入您的名称:');
-            if (!name || !name.trim()) return;
+function showUnits(key){
+    const data=knowledgeDB[key];
+    const container=document.getElementById('knowledgeContent');
+    let html=`<div style="margin-bottom:20px"><button class="btn btn-secondary" onclick="renderKnowledge()">返回知识库</button></div>`;
+    html+='<div class="unit-list">';
+    data.units.forEach(unit=>{
+        html+=`<div class="unit-item" onclick="startLearning('${key}','${unit.id}')">
+            <strong>${unit.name}</strong>
+            <span style="color:#666;margin-left:10px">${unit.items.length}个知识点</span>
+        </div>`;
+    });
+    html+='</div>';
+    container.innerHTML=html;
+}
 
-            appState.role = role;
-            appState.currentUser = name.trim();
+function startLearning(key,unitId){
+    const data=knowledgeDB[key];
+    const unit=data.units.find(u=>u.id===unitId);
+    const container=document.getElementById('knowledgeContent');
+    let html=`<div style="margin-bottom:20px"><button class="btn btn-secondary" onclick="showUnits('${key}')">返回单元列表</button></div>`;
+    html+=`<div class="learning-content"><h3>${unit.name}</h3>`;
+    unit.items.forEach((item,idx)=>{
+        html+=`<div style="margin-top:15px;padding:15px;background:white;border-radius:8px">
+            <p style="font-weight:500">${item.question}</p>
+            <input type="text" class="quiz-input" id="answer${idx}" placeholder="请输入答案">
+            <button class="btn btn-primary" style="margin-top:10px" onclick="checkAnswer(${idx},'${item.answer}',${item.points})">提交答案</button>
+            <div id="result${idx}" style="margin-top:10px"></div>
+        </div>`;
+    });
+    html+=`<button class="btn btn-success" style="width:100%;margin-top:20px" onclick="completeUnit('${key}','${unitId}')">完成本单元学习</button></div>`;
+    container.innerHTML=html;
+}
 
-            const child = {
-                id: Date.now(),
-                name: role === 'parent' ? name.trim() + '的孩子' : name.trim(),
-                points: 0,
-                level: 1,
-                exp: 0,
-                streak: 0
-            };
-            appState.children.push(child);
+function checkAnswer(idx,answer,points){
+    const userAnswer=document.getElementById('answer'+idx).value.trim();
+    const resultDiv=document.getElementById('result'+idx);
+    if(userAnswer===answer){
+        resultDiv.innerHTML=`<span style="color:#10B981">正确! +${points}积分</span>`;
+    }else{
+        resultDiv.innerHTML=`<span style="color:#EF4444">错误，正确答案是: ${answer}</span>`;
+    }
+}
 
-            saveData();
-            showMainApp();
-        }
+function completeUnit(key,unitId){
+    const child=appState.children[0];
+    if(!child)return;
+    const plan=appState.plans.find(p=>p.active);
+    if(plan){plan.completedUnits=(plan.completedUnits||0)+1;}
+    child.completedUnits=(child.completedUnits||0)+1;
+    const bonus=20;
+    child.points=(child.points||0)+bonus;
+    child.exp=(child.exp||0)+bonus;
+    if(child.exp>=100){
+        child.level=(child.level||1)+1;
+        child.exp=child.exp-100;
+    }
+    saveData();
+    updateDashboard();
+    renderTasks();
+    showUnits(key);
+    alert('单元完成! +'+bonus+'积分');
+}
 
-        function saveData() {
-            localStorage.setItem('studyAppData', JSON.stringify(appState));
-        }
+function renderQuiz(){
+    const container=document.getElementById('quizContent');
+    const plan=appState.plans.find(p=>p.active);
+    if(!plan){
+        container.innerHTML='<div style="background:white;padding:30px;border-radius:15px;text-align:center"><p>还没有学习计划</p><button class="btn btn-primary" onclick="switchTab(document.querySelector(\'[data-tab=plans]\'),\'plans\');generateSmartPlan();">去创建学习计划</button></div>';
+        return;
+    }
+    const key=plan.subject+'_'+plan.grade+'_'+plan.semester;
+    const data=knowledgeDB[key];
+    if(!data){
+        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">该课程暂无可用测试</p>';
+        return;
+    }
+    const units=data.units.slice(0,3);
+    let html='<div style="background:white;padding:20px;border-radius:15px">';
+    let quizId=0;
+    units.forEach(unit=>{
+        unit.items.slice(0,2).forEach(item=>{
+            html+=`<div style="margin-bottom:20px;padding:15px;border:1px solid #e5e7eb;border-radius:10px">
+                <p style="font-weight:500;margin-bottom:10px">${item.question}</p>
+                <input type="text" class="quiz-input" id="quiz${quizId}" placeholder="请输入答案">
+                <button class="btn btn-secondary" style="margin-top:8px" onclick="checkQuizAnswer(${quizId},'${item.answer}',${item.points})">提交</button>
+                <div id="quizResult${quizId}" style="margin-top:8px"></div>
+            </div>`;
+            quizId++;
+        });
+    });
+    html+='</div>';
+    container.innerHTML=html;
+}
 
-        function showMainApp() {
-            document.getElementById('welcomeScreen').classList.add('hidden');
-            document.getElementById('mainApp').classList.add('active');
-            document.getElementById('userName').textContent = appState.currentUser;
-            document.getElementById('userRole').textContent = appState.role === 'parent' ? '家长' : '学生';
-            updateDashboard();
-            renderChildList();
-        }
+function checkQuizAnswer(id,answer,points){
+    const userAnswer=document.getElementById('quiz'+id).value.trim();
+    const resultDiv=document.getElementById('quizResult'+id);
+    if(userAnswer===answer){
+        resultDiv.innerHTML=`<span style="color:#10B981">正确! +${points}积分</span>`;
+    }else{
+        resultDiv.innerHTML=`<span style="color:#EF4444">错误</span>`;
+    }
+}
 
-        function updateDashboard() {
-            const child = appState.children[0] || {};
-            document.getElementById('streakDays').textContent = child.streak || 0;
-            document.getElementById('totalPoints').textContent = child.points || 0;
-            document.getElementById('userLevel').textContent = 'Lv.' + (child.level || 1);
-        }
+function renderAchievements(){
+    const container=document.getElementById('achievementList');
+    const child=appState.children[0]||{};
+    let html='';
+    achievementsList.forEach(a=>{
+        let unlocked=false;
+        if(a.type==='points'&&(child.points||0)>=a.req)unlocked=true;
+        else if(a.type==='level'&&(child.level||0)>=a.req)unlocked=true;
+        else if(!a.type&&(child.streak||0)>=a.req)unlocked=true;
+        html+=`<div class="achievement-card ${unlocked?'':'locked'}">
+            <div style="font-size:36px;margin-bottom:10px">${a.icon}</div>
+            <h4>${a.title}</h4>
+            <p style="color:#666;font-size:0.85rem">${a.desc}</p>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
 
-        function switchTab(el, tabId) {
-            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.content-area').forEach(c => c.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
+function renderShop(){
+    const container=document.getElementById('shopList');
+    let html='';
+    shopItems.forEach(item=>{
+        html+=`<div class="shop-card">
+            <div style="font-size:48px;margin-bottom:10px">${item.icon}</div>
+            <h4>${item.title}</h4>
+            <div style="background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 15px;border-radius:15px;display:inline-block;margin:10px 0">${item.price}积分</div>
+            <button class="btn btn-primary">购买</button>
+        </div>`;
+    });
+    container.innerHTML=html;
+}
 
-        function doCheckin() {
-            const child = appState.children[0];
-            if (!child) return;
+function logout(){
+    if(confirm('确定要退出登录吗?')){
+        localStorage.removeItem('studyAppData');
+        location.reload();
+    }
+}
 
-            const today = new Date().toDateString();
-            const alreadyChecked = appState.checkins.some(c => c.date === today);
-
-            if (alreadyChecked) {
-                document.getElementById('checkinStatus').innerHTML = '<p style="color: orange;">今日已打卡！</p>';
-                return;
-            }
-
-            appState.checkins.push({ date: today });
-            child.streak = (child.streak || 0) + 1;
-            const points = 10 + Math.min(child.streak * 2, 20);
-            child.points = (child.points || 0) + points;
-            child.exp = (child.exp || 0) + points;
-
-            if (child.exp >= 100) {
-                child.level = (child.level || 1) + 1;
-                child.exp = child.exp - 100;
-            }
-
-            saveData();
-            updateDashboard();
-            document.getElementById('checkinStatus').innerHTML = '<p style="color: green;">打卡成功！+' + points + '积分</p>';
-        }
-
-        function addChild() {
-            const name = prompt('请输入孩子名称:');
-            if (!name) return;
-
-            const child = {
-                id: Date.now(),
-                name: name,
-                points: 0,
-                level: 1,
-                exp: 0,
-                streak: 0
-            };
-
-            appState.children.push(child);
-            saveData();
-            renderChildList();
-        }
-
-        function renderChildList() {
-            const list = document.getElementById('childList');
-            list.innerHTML = appState.children.map(c => 
-                '<div style="background: white; padding: 15px; margin: 10px 0; border-radius: 8px;">' +
-                '<strong>' + c.name + '</strong> - Lv.' + c.level + ' - ' + c.points + '积分' +
-                '</div>'
-            ).join('') || '<p>暂无孩子</p>';
-        }
-
-        function generatePlan() {
-            const subjects = ['数学', '语文', '英语'];
-            const subject = subjects[Math.floor(Math.random() * subjects.length)];
-            const plan = {
-                id: Date.now(),
-                title: subject + '学习计划',
-                tasks: 10
-            };
-            appState.plans.push(plan);
-            saveData();
-            document.getElementById('planList').innerHTML += 
-                '<div style="background: white; padding: 15px; margin: 10px 0; border-radius: 8px;">' +
-                '<strong>' + plan.title + '</strong><p>任务数: ' + plan.tasks + '</p></div>';
-        }
-
-        function logout() {
-            if (confirm('确定要退出登录吗？')) {
-                localStorage.removeItem('studyAppData');
-                location.reload();
-            }
-        }
-
-        loadData();
-    </script>
+loadData();
+</script>
 </body>
 </html>
