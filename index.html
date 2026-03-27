@@ -30,8 +30,8 @@
         .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:30px}
         .stat-card{background:white;padding:25px;border-radius:15px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
         .stat-value{font-size:2.5rem;font-weight:700;margin-bottom:5px}.stat-label{color:#666;font-size:0.95rem}
-        .checkin-section{background:white;padding:40px;border-radius:20px;text-align:center;margin-bottom:25px}
-        .checkin-btn{background:linear-gradient(135deg,#10B981 0%,#34D399 100%);color:white;border:none;padding:25px 60px;border-radius:50px;font-size:1.4rem;font-weight:700;cursor:pointer}
+        .checkin-section{background:white;padding:30px;border-radius:20px;text-align:center;margin-bottom:25px}
+        .checkin-btn{background:linear-gradient(135deg,#10B981 0%,#34D399 100%);color:white;border:none;padding:20px 50px;border-radius:50px;font-size:1.3rem;font-weight:700;cursor:pointer}
         .task-list{background:white;border-radius:15px;padding:25px}
         .task-item{padding:18px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:15px}
         .task-item:last-child{border-bottom:none}
@@ -39,13 +39,10 @@
         .task-checkbox.completed{background:#10B981;border-color:#10B981;color:white}
         .task-info{flex:1}.task-points{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:4px 12px;border-radius:15px;font-size:0.85rem;font-weight:600}
         .plan-card{background:white;padding:20px;border-radius:15px;margin-bottom:15px}
-        .plan-badge{padding:4px 12px;border-radius:15px;font-size:0.85rem}
-        .progress-bar{height:10px;background:#e5e7eb;border-radius:5px;overflow:hidden;margin:10px 0}
-        .progress-fill{height:100%;background:linear-gradient(90deg,#4F46E5,#818CF8);border-radius:5px}
         .knowledge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
         .knowledge-card{background:white;padding:20px;border-radius:15px;cursor:pointer;transition:all 0.2s}
         .knowledge-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.12)}
-        .unit-list{margin-top:15px;max-height:200px;overflow-y:auto}
+        .unit-list{margin-top:15px;max-height:400px;overflow-y:auto}
         .unit-item{padding:10px;background:#f9fafb;border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s}
         .unit-item:hover{background:#e5e7eb}
         .unit-item.selected{background:#dbeafe;border:2px solid #4F46E5}
@@ -56,21 +53,36 @@
         .shop-card{background:white;padding:25px;border-radius:15px;text-align:center}
         .child-card{background:white;padding:20px;border-radius:15px;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center}
         .child-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);color:white;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
-        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;padding:20px}
-        .modal.active{display:flex;justify-content:center;align-items:center}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;padding:20px;overflow-y:auto}
+        .modal.active{display:flex;justify-content:center;align-items:flex-start;padding-top:50px}
         .modal-content{background:white;padding:30px;border-radius:20px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto}
         .form-group{margin-bottom:15px}.form-group label{display:block;margin-bottom:5px;font-weight:500}.form-group input,.form-group select{width:100%;padding:10px 15px;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem}
         .checkin-result{margin-top:20px;padding:15px;border-radius:10px}
         .checkin-result.success{background:#D1FAE5;color:#065F46}.checkin-result.already{background:#FEF3C7;color:#92400E}
-        .learning-content{background:#f9fafb;padding:15px;border-radius:10px;margin-top:10px;font-size:0.9rem}
+        .grade-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:15px;background:white;border-radius:12px}
+        .grade-filter select{padding:8px 15px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px}
+        .calendar{background:white;border-radius:15px;padding:20px}
+        .calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}
+        .calendar-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;transition:all 0.2s}
+        .calendar-day:hover{background:#f3f4f6}
+        .calendar-day.checked{background:#10B981;color:white}
+        .calendar-day.today{border:2px solid #4F46E5}
+        .calendar-day.empty{background:transparent;cursor:default}
+        .weekday{font-weight:500;color:#666;font-size:0.9rem;padding:10px 0}
+        .typing-area{background:white;border-radius:15px;padding:30px;margin-bottom:20px}
+        .word-display{font-size:3rem;font-weight:700;text-align:center;margin:30px 0;color:#4F46E5;letter-spacing:5px}
+        .word-input{width:100%;padding:15px;font-size:1.5rem;text-align:center;border:2px solid #e5e7eb;border-radius:10px;outline:none}
+        .word-input:focus{border-color:#4F46E5}
+        .word-stats{display:flex;justify-content:center;gap:30px;margin-top:20px}
+        .word-stat{text-align:center}
+        .word-stat-value{font-size:1.5rem;font-weight:700;color:#4F46E5}
+        .word-stat-label{color:#666;font-size:0.9rem}
         .quiz-option{padding:12px;background:white;border:2px solid #e5e7eb;border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s}
         .quiz-option:hover{border-color:#4F46E5}
         .quiz-option.correct{background:#d1fae5;border-color:#10B981}
         .quiz-option.wrong{background:#fee2e2;border-color:#EF4444}
-        .quiz-input{width:100%;padding:10px;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem}
-        .grade-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:15px;background:white;border-radius:12px}
-        .grade-filter select{padding:8px 15px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px}
-        @media(max-width:768px){.welcome-title{font-size:2rem}.header{flex-direction:column;text-align:center}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){.welcome-title{font-size:2rem}.header{flex-direction:column;text-align:center}.stats-grid{grid-template-columns:repeat(2,1fr)}.word-display{font-size:2rem}}
     </style>
 </head>
 <body>
@@ -93,9 +105,8 @@
         <button class="nav-tab" onclick="switchTab(this,'checkin')">&#10004; 打卡</button>
         <button class="nav-tab" onclick="switchTab(this,'plans')">&#128203; 计划</button>
         <button class="nav-tab" onclick="switchTab(this,'knowledge')">&#128218; 知识库</button>
-        <button class="nav-tab" onclick="switchTab(this,'quiz')">&#128221; 学习测试</button>
+        <button class="nav-tab" onclick="switchTab(this,'practice')">&#128187; 练习</button>
         <button class="nav-tab" onclick="switchTab(this,'achievements')">&#127942; 成就</button>
-        <button class="nav-tab" onclick="switchTab(this,'shop')">&#128722; 商店</button>
         <button class="nav-tab" onclick="switchTab(this,'children')">&#128118; 孩子</button>
     </div>
     <div class="content-area active" id="dashboard">
@@ -103,37 +114,46 @@
             <div class="stat-card"><div style="font-size:36px">&#128293;</div><div class="stat-value" id="streakDays" style="color:#F59E0B">0</div><div class="stat-label">连续打卡</div></div>
             <div class="stat-card"><div style="font-size:36px">&#11088;</div><div class="stat-value" id="totalPoints" style="color:#10B981">0</div><div class="stat-label">总积分</div></div>
             <div class="stat-card"><div style="font-size:36px">&#127941;</div><div class="stat-value" id="userLevel" style="color:#4F46E5">Lv.1</div><div class="stat-label">等级</div></div>
-            <div class="stat-card"><div style="font-size:36px">&#128218;</div><div class="stat-value" id="completedUnits" style="color:#EF4444">0</div><div class="stat-label">已学单元</div></div>
+            <div class="stat-card"><div style="font-size:36px">&#128218;</div><div class="stat-value" id="totalWords" style="color:#EF4444">0</div><div class="stat-label">已学单词</div></div>
         </div>
         <h2 style="margin-bottom:15px">&#128203; 今日学习任务</h2>
         <div class="task-list" id="taskList"></div>
     </div>
     <div class="content-area" id="checkin">
         <div class="checkin-section"><h2 style="margin-bottom:20px">&#127919; 每日打卡</h2><button class="checkin-btn" onclick="doCheckin()">&#10024; 立即打卡</button><div id="checkinResult"></div></div>
-        <h3 style="margin-bottom:15px">&#128197; 打卡记录</h3>
-        <div class="task-list" id="checkinHistory"></div>
+        <h3 style="margin-bottom:15px">&#128197; <span id="checkinMonth"></span> 打卡日历</h3>
+        <div class="calendar" id="checkinCalendar"></div>
     </div>
     <div class="content-area" id="plans">
         <div style="display:flex;justify-content:space-between;margin-bottom:20px"><h2>&#128203; 学习计划</h2><div style="display:flex;gap:10px"><button class="btn btn-success" onclick="openPlanModal()">&#10133; 创建计划</button><button class="btn btn-primary" onclick="generateSmartPlan()">&#129504; 智能生成</button></div></div>
         <div id="planList"></div>
     </div>
     <div class="content-area" id="knowledge">
-        <h2 style="margin-bottom:20px">&#128218; 知识库</h2>
+        <h2 style="margin-bottom:20px">&#128218; 英语词库</h2>
         <div class="grade-filter">
-            <select id="filterGrade"><option value="0">全部年级</option><option value="1-6">小学(1-6年级)</option><option value="7-9">初中(7-9年级)</option><option value="10-12">高中(10-12年级)</option></select>
-            <select id="filterSubject"><option value="">全部学科</option><option value="语文">语文</option><option value="数学">数学</option><option value="英语">英语</option><option value="物理">物理</option><option value="化学">化学</option><option value="生物">生物</option><option value="历史">历史</option><option value="地理">地理</option><option value="道德与法治">道德与法治</option></select>
-            <select id="filterSemester"><option value="">全部学期</option><option value="1">上学期</option><option value="2">下学期</option></select>
+            <select id="filterGrade"><option value="0">全部年级</option><option value="3-6">小学(3-6年级)</option><option value="7-9">初中(7-9年级)</option><option value="10-12">高中(10-12年级)</option></select>
+            <select id="filterBook"><option value="">全部册</option><option value="上">上册</option><option value="下">下册</option></select>
             <button class="btn btn-primary" onclick="renderKnowledge()">筛选</button>
         </div>
         <div id="knowledgeContent"></div>
     </div>
-    <div class="content-area" id="quiz">
-        <h2 style="margin-bottom:20px">&#128221; 学习测试</h2>
-        <p style="color:#666;margin-bottom:20px">根据学习计划自动生成的测试题</p>
-        <div id="quizContent"></div>
+    <div class="content-area" id="practice">
+        <h2 style="margin-bottom:20px">&#128187; 单词练习</h2>
+        <p style="color:#666;margin-bottom:20px" id="practiceInfo">根据学习计划自动安排每日练习</p>
+        <div class="typing-area">
+            <div class="word-display" id="wordDisplay">点击开始练习</div>
+            <input type="text" class="word-input" id="wordInput" placeholder="请输入英文单词" autocomplete="off" disabled>
+            <div class="word-stats">
+                <div class="word-stat"><div class="word-stat-value" id="correctCount">0</div><div class="word-stat-label">正确</div></div>
+                <div class="word-stat"><div class="word-stat-value" id="wrongCount">0</div><div class="word-stat-label">错误</div></div>
+                <div class="word-stat"><div class="word-stat-value" id="remainCount">0</div><div class="word-stat-label">剩余</div></div>
+            </div>
+            <button class="btn btn-primary" style="width:100%;margin-top:20px" id="startPracticeBtn" onclick="startPractice()">开始练习</button>
+            <button class="btn btn-success" style="width:100%;margin-top:10px;display:none" id="nextWordBtn" onclick="nextWord()">下一个</button>
+        </div>
+        <div id="practiceHistory" style="margin-top:20px"></div>
     </div>
     <div class="content-area" id="achievements"><h2 style="margin-bottom:20px">&#127942; 成就徽章</h2><div class="achievement-grid" id="achievementList"></div></div>
-    <div class="content-area" id="shop"><h2 style="margin-bottom:20px">&#128722; 积分商店</h2><div class="shop-grid" id="shopList"></div></div>
     <div class="content-area" id="children">
         <div style="display:flex;justify-content:space-between;margin-bottom:20px"><h2>&#128118; 孩子管理</h2><button class="btn btn-success" onclick="openAddChildModal()">&#10133; 添加孩子</button></div>
         <div id="childList"></div>
@@ -141,80 +161,826 @@
 </div>
 <div class="modal" id="childModal">
     <div class="modal-content"><h2 id="childModalTitle" style="margin-bottom:20px">添加孩子</h2>
-        <div class="form-group"><label>昵称 *</label><input type="text" id="childName" placeholder="请输入孩子昵称"></div>
-        <div class="form-group"><label>年级</label><select id="childGrade"><option value="1">小学一年级</option><option value="2">小学二年级</option><option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option><option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option><option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option></select></div>
-        <div class="form-group"><label>当前学期</label><select id="childSemester"><option value="1">上学期</option><option value="2">下学期</option></select></div>
-        <div class="form-group"><label>年龄</label><input type="number" id="childAge" placeholder="请输入年龄" min="6" max="18"></div>
+        <div class="form-group"><label>孩子姓名 *</label><input type="text" id="childName" placeholder="请输入孩子姓名"></div>
+        <div class="form-group"><label>年级</label>
+            <select id="childGrade">
+                <option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option>
+                <option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option>
+                <option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option>
+            </select>
+        </div>
+        <div class="form-group"><label>每日打卡周期（天）</label>
+            <select id="childCycle">
+                <option value="7">1周</option><option value="14">2周</option><option value="30">1个月</option><option value="90">3个月</option>
+            </select>
+        </div>
         <button class="btn btn-primary" style="width:100%" onclick="saveChild()">保存</button>
-        <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closeChildModal()">取消</button>
     </div>
 </div>
 <div class="modal" id="planModal">
     <div class="modal-content"><h2 style="margin-bottom:20px">创建学习计划</h2>
-        <div class="form-group"><label>计划名称 *</label><input type="text" id="planName" placeholder="例如：五年级英语下学期"></div>
-        <div class="form-group"><label>学科</label><select id="planSubject"><option value="语文">语文</option><option value="数学">数学</option><option value="英语">英语</option><option value="物理">物理</option><option value="化学">化学</option><option value="生物">生物</option><option value="历史">历史</option><option value="地理">地理</option><option value="道德与法治">道德与法治</option></select></div>
-        <div class="form-group"><label>年级</label><select id="planGrade"><option value="1">小学一年级</option><option value="2">小学二年级</option><option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option><option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option><option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option></select></div>
-        <div class="form-group"><label>学期</label><select id="planSemester"><option value="1">上学期</option><option value="2">下学期</option></select></div>
-        <div class="form-group"><label>每日学习单元数</label><input type="number" id="dailyUnits" value="2" min="1" max="5"></div>
-        <div class="form-group"><label>学习周期（天）</label><input type="number" id="planDays" value="30" min="7" max="90"></div>
+        <div class="form-group"><label>计划名称</label><input type="text" id="planName" placeholder="例如：五年级英语学习"></div>
+        <div class="form-group"><label>年级</label>
+            <select id="planGrade">
+                <option value="3">小学三年级</option><option value="4">小学四年级</option><option value="5">小学五年级</option><option value="6">小学六年级</option>
+                <option value="7">初中一年级</option><option value="8">初中二年级</option><option value="9">初中三年级</option>
+                <option value="10">高中一年级</option><option value="11">高中二年级</option><option value="12">高中三年级</option>
+            </select>
+        </div>
+        <div class="form-group"><label>每日学习单词数</label><input type="number" id="dailyWords" value="10" min="5" max="50"></div>
+        <div class="form-group"><label>学习周期（天）</label>
+            <select id="planDays">
+                <option value="7">1周</option><option value="14">2周</option><option value="30">1个月</option><option value="90">3个月</option>
+            </select>
+        </div>
         <button class="btn btn-primary" style="width:100%" onclick="createPlan()">创建</button>
         <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closePlanModal()">取消</button>
     </div>
 </div>
 <script>
-const knowledgeDB = {
-    "语文_1_1": {name:"一年级语文上册",units:[
-        {id:"U1",name:"拼音入门",items:[
-            {type:"word",question:"a",answer:"单韵母a",points:3},
-            {type:"word",question:"o",answer:"单韵母o",points:3},
-            {type:"word",question:"e",answer:"单韵母e",points:3}
-        ]},
-        {id:"U2",name:"生字学习",items:[
-            {type:"word",question:"一",answer:"数字一",points:3},
-            {type:"word",question:"二",answer:"数字二",points:3},
-            {type:"word",question:"三",answer:"数字三",points:3}
-        ]}
+const englishWords = {
+    // 小学英语 (年级_册)
+    "3_上":{name:"三年级英语上册",words:[
+        {word:"hello",chinese:"你好",phonetic:"/həˈloʊ/"},
+        {word:"hi",chinese:"嗨",phonetic:"/haɪ/"},
+        {word:"goodbye",chinese:"再见",phonetic:"/ˌɡʊdˈbaɪ/"},
+        {word:"bye",chinese:"拜拜",phonetic:"/baɪ/"},
+        {word:"I",chinese:"我",phonetic:"/aɪ/"},
+        {word:"am",chinese:"是",phonetic:"/æm/"},
+        {word:"I'm",chinese:"我是",phonetic:"/aɪm/"},
+        {word:"what",chinese:"什么",phonetic:"/wɒt/"},
+        {word:"is",chinese:"是",phonetic:"/ɪz/"},
+        {word:"your",chinese:"你的",phonetic:"/jɔːr/"},
+        {word:"name",chinese:"名字",phonetic:"/neɪm/"},
+        {word:"my",chinese:"我的",phonetic:"/maɪ/"},
+        {word:"red",chinese:"红色",phonetic:"/red/"},
+        {word:"blue",chinese:"蓝色",phonetic:"/bluː/"},
+        {word:"yellow",chinese:"黄色",phonetic:"/ˈjeloʊ/"},
+        {word:"green",chinese:"绿色",phonetic:"/ɡriːn/"},
+        {word:"black",chinese:"黑色",phonetic:"/blæk/"},
+        {word:"white",chinese:"白色",phonetic:"/waɪt/"},
+        {word:"orange",chinese:"橙色",phonetic:"/ˈɔːrɪndʒ/"},
+        {word:"one",chinese:"一",phonetic:"/wʌn/"},
+        {word:"two",chinese:"二",phonetic:"/tuː/"},
+        {word:"three",chinese:"三",phonetic:"/θriː/"},
+        {word:"four",chinese:"四",phonetic:"/fɔːr/"},
+        {word:"five",chinese:"五",phonetic:"/faɪv/"},
+        {word:"six",chinese:"六",phonetic:"/sɪks/"},
+        {word:"seven",chinese:"七",phonetic:"/ˈsevən/"},
+        {word:"eight",chinese:"八",phonetic:"/eɪt/"},
+        {word:"nine",chinese:"九",phonetic:"/naɪn/"},
+        {word:"ten",chinese:"十",phonetic:"/ten/"},
+        {word:"cat",chinese:"猫",phonetic:"/kæt/"},
+        {word:"dog",chinese:"狗",phonetic:"/dɔːɡ/"},
+        {word:"bird",chinese:"鸟",phonetic:"/bɜːrd/"},
+        {word:"fish",chinese:"鱼",phonetic:"/fɪʃ/"},
+        {word:"book",chinese:"书",phonetic:"/bʊk/"},
+        {word:"bag",chinese:"包",phonetic:"/bæɡ/"},
+        {word:"pen",chinese:"钢笔",phonetic:"/pen/"},
+        {word:"ruler",chinese:"尺子",phonetic:"/ˈruːlər/"},
+        {word:"eraser",chinese:"橡皮",phonetic:"/ɪˈreɪsər/"},
+        {word:"pencil",chinese:"铅笔",phonetic:"/ˈpensəl/"},
+        {word:"desk",chinese:"桌子",phonetic:"/desk/"},
+        {word:"chair",chinese:"椅子",phonetic:"/tʃer/"}
     ]},
-    "数学_1_1": {name:"一年级数学上册",units:[
-        {id:"U1",name:"数一数",items:[
-            {type:"calc",question:"1+1=?",answer:"2",points:4},
-            {type:"calc",question:"2+3=?",answer:"5",points:4}
-        ]},
-        {id:"U2",name:"比大小",items:[
-            {type:"concept",question:"3和5哪个大?",answer:"5",points:4}
-        ]}
+    "3_下":{name:"三年级英语下册",words:[
+        {word:"teacher",chinese:"老师",phonetic:"/ˈtiːtʃər/"},
+        {word:"student",chinese:"学生",phonetic:"/ˈstjuːdənt/"},
+        {word:"classroom",chinese:"教室",phonetic:"/ˈklæsrʊm/"},
+        {word:"school",chinese:"学校",phonetic:"/skuːl/"},
+        {word:"door",chinese:"门",phonetic:"/dɔːr/"},
+        {word:"window",chinese:"窗户",phonetic:"/ˈwɪndoʊ/"},
+        {word:"blackboard",chinese:"黑板",phonetic:"/ˈblækbɔːrd/"},
+        {word:"head",chinese:"头",phonetic:"/hed/"},
+        {word:"face",chinese:"脸",phonetic:"/feɪs/"},
+        {word:"eye",chinese:"眼睛",phonetic:"/aɪ/"},
+        {word:"ear",chinese:"耳朵",phonetic:"/ɪr/"},
+        {word:"nose",chinese:"鼻子",phonetic:"/noʊz/"},
+        {word:"mouth",chinese:"嘴",phonetic:"/maʊθ/"},
+        {word:"hand",chinese:"手",phonetic:"/hænd/"},
+        {word:"foot",chinese:"脚",phonetic:"/fʊt/"},
+        {word:"arm",chinese:"胳膊",phonetic:"/ɑːrm/"},
+        {word:"leg",chinese:"腿",phonetic:"/leɡ/"},
+        {word:"body",chinese:"身体",phonetic:"/ˈbɑːdi/"},
+        {word:"father",chinese:"父亲",phonetic:"/ˈfɑːðər/"},
+        {word:"mother",chinese:"母亲",phonetic:"/ˈmʌðər/"},
+        {word:"brother",chinese:"兄弟",phonetic:"/ˈbrʌðər/"},
+        {word:"sister",chinese:"姐妹",phonetic:"/ˈsɪstər/"},
+        {word:"grandma",chinese:"奶奶",phonetic:"/ˈɡrænmɑː/"},
+        {word:"grandpa",chinese:"爷爷",phonetic:"/ˈɡrænpɑː/"},
+        {word:"family",chinese:"家庭",phonetic:"/ˈfæməli/"},
+        {word:"like",chinese:"喜欢",phonetic:"/laɪk/"},
+        {word:"banana",chinese:"香蕉",phonetic:"/bəˈnænə/"},
+        {word:"apple",chinese:"苹果",phonetic:"/ˈæpəl/"},
+        {word:"orange",chinese:"橙子",phonetic:"/ˈɔːrɪndʒ/"},
+        {word:"pear",chinese:"梨",phonetic:"/per/"},
+        {word:"eleven",chinese:"十一",phonetic:"/ɪˈlevən/"},
+        {word:"twelve",chinese:"十二",phonetic:"/twelv/"},
+        {word:"thirteen",chinese:"十三",phonetic:"/θɜːrˈtiːn/"},
+        {word:"fourteen",chinese:"十四",phonetic:"/fɔːrˈtiːn/"},
+        {word:"fifteen",chinese:"十五",phonetic:"/fɪfˈtiːn/"},
+        {word:"sixteen",chinese:"十六",phonetic:"/sɪksˈtiːn/"},
+        {word:"seventeen",chinese:"十七",phonetic:"/ˌsevənˈtiːn/"},
+        {word:"eighteen",chinese:"十八",phonetic:"/eɪˈtiːn/"},
+        {word:"nineteen",chinese:"十九",phonetic:"/naɪnˈtiːn/"},
+        {word:"twenty",chinese:"二十",phonetic:"/ˈtwenti/"}
     ]},
-    "英语_3_1": {name:"三年级英语上册",units:[
-        {id:"U1",name:"Hello",items:[
-            {type:"word",question:"hello",answer:"你好",points:4},
-            {type:"word",question:"hi",answer:"嗨",points:4}
-        ]},
-        {id:"U2",name:"Colours",items:[
-            {type:"word",question:"red",answer:"红色",points:4},
-            {type:"word",question:"blue",answer:"蓝色",points:4},
-            {type:"word",question:"yellow",answer:"黄色",points:4}
-        ]}
+    "4_上":{name:"四年级英语上册",words:[
+        {word:"classmate",chinese:"同学",phonetic:"/ˈklæsmeɪt/"},
+        {word:"friend",chinese:"朋友",phonetic:"/frend/"},
+        {word:"teacher",chinese:"教师",phonetic:"/ˈtiːtʃər/"},
+        {word:"classroom",chinese:"教室",phonetic:"/ˈklæsrʊm/"},
+        {word:"window",chinese:"窗户",phonetic:"/ˈwɪndoʊ/"},
+        {word:"door",chinese:"门",phonetic:"/dɔːr/"},
+        {word:"desk",chinese:"书桌",phonetic:"/desk/"},
+        {word:"chair",chinese:"椅子",phonetic:"/tʃer/"},
+        {word:"picture",chinese:"图片",phonetic:"/ˈpɪktʃər/"},
+        {word:"wall",chinese:"墙",phonetic:"/wɔːl/"},
+        {word:"floor",chinese:"地板",phonetic:"/flɔːr/"},
+        {word:"near",chinese:"在...附近",phonetic:"/nɪr/"},
+        {word:"behind",chinese:"在...后面",phonetic:"/bɪˈhaɪnd/"},
+        {word:"toy",chinese:"玩具",phonetic:"/tɔɪ/"},
+        {word:"bear",chinese:"熊",phonetic:"/ber/"},
+        {word:"dog",chinese:"狗",phonetic:"/dɔːɡ/"},
+        {word:"cat",chinese:"猫",phonetic:"/kæt/"},
+        {word:"bird",chinese:"鸟",phonetic:"/bɜːrd/"},
+        {word:"elephant",chinese:"大象",phonetic:"/ˈelɪfənt/"},
+        {word:"monkey",chinese:"猴子",phonetic:"/ˈmʌŋki/"},
+        {word:"zoo",chinese:"动物园",phonetic:"/zuː/"},
+        {word:"funny",chinese:"滑稽的",phonetic:"/ˈfʌni/"},
+        {word:"tall",chinese:"高的",phonetic:"/tɔːl/"},
+        {word:"short",chinese:"矮的",phonetic:"/ʃɔːrt/"},
+        {word:"thin",chinese:"瘦的",phonetic:"/θɪn/"},
+        {word:"fat",chinese:"胖的",phonetic:"/fæt/"},
+        {word:"big",chinese:"大的",phonetic:"/bɪɡ/"},
+        {word:"small",chinese:"小的",phonetic:"/smɔːl/"},
+        {word:"long",chinese:"长的",phonetic:"/lɔːŋ/"},
+        {word:"giraffe",chinese:"长颈鹿",phonetic:"/dʒəˈræf/"},
+        {word:"hamburger",chinese:"汉堡",phonetic:"/ˈhæmbɜːrɡər/"},
+        {word:"hot dog",chinese:"热狗",phonetic:"/hɒt dɒɡ/"},
+        {word:"bread",chinese:"面包",phonetic:"/bred/"},
+        {word:"milk",chinese:"牛奶",phonetic:"/mɪlk/"},
+        {word:"water",chinese:"水",phonetic:"/ˈwɔːtər/"},
+        {word:"juice",chinese:"果汁",phonetic:"/dʒuːs/"},
+        {word:"egg",chinese:"鸡蛋",phonetic:"/eɡ/"},
+        {word:"rice",chinese:"米饭",phonetic:"/raɪs/"},
+        {word:"chicken",chinese:"鸡肉",phonetic:"/ˈtʃɪkɪn/"},
+        {word:"fish",chinese:"鱼",phonetic:"/fɪʃ/"}
+    ]},
+    "4_下":{name:"四年级英语下册",words:[
+        {word:"time",chinese:"时间",phonetic:"/taɪm/"},
+        {word:"o'clock",chinese:"...点钟",phonetic:"/əˈklɑːk/"},
+        {word:"morning",chinese:"早上",phonetic:"/ˈmɔːrnɪŋ/"},
+        {word:"afternoon",chinese:"下午",phonetic:"/ˌæftərˈnuːn/"},
+        {word:"evening",chinese:"晚上",phonetic:"/ˈiːvnɪŋ/"},
+        {word:"breakfast",chinese:"早餐",phonetic:"/ˈbrekfəst/"},
+        {word:"lunch",chinese:"午餐",phonetic:"/lʌntʃ/"},
+        {word:"dinner",chinese:"晚餐",phonetic:"/ˈdɪnər/"},
+        {word:"go",chinese:"去",phonetic:"/ɡoʊ/"},
+        {word:"home",chinese:"家",phonetic:"/hoʊm/"},
+        {word:"to",chinese:"到",phonetic:"/tuː/"},
+        {word:"get up",chinese:"起床",phonetic:"/ɡet ʌp/"},
+        {word:"wake up",chinese:"醒来",phonetic:"/weɪk ʌp/"},
+        {word:"brush",chinese:"刷",phonetic:"/brʌʃ/"},
+        {word:"teeth",chinese:"牙齿",phonetic:"/tiːθ/"},
+        {word:"wash",chinese:"洗",phonetic:"/wɒʃ/"},
+        {word:"face",chinese:"脸",phonetic:"/feɪs/"},
+        {word:"eat",chinese:"吃",phonetic:"/iːt/"},
+        {word:"drink",chinese:"喝",phonetic:"/drɪŋk/"},
+        {word:"sleep",chinese:"睡觉",phonetic:"/sliːp/"},
+        {word:"play",chinese:"玩",phonetic:"/pleɪ/"},
+        {word:"watch",chinese:"看",phonetic:"/wɒtʃ/"},
+        {word:"TV",chinese:"电视",phonetic:"/ˌtiːˈviː/"},
+        {word:"music",chinese:"音乐",phonetic:"/ˈmjuːzɪk/"},
+        {word:"song",chinese:"歌曲",phonetic:"/sɔːŋ/"},
+        {word:"draw",chinese:"画",phonetic:"/drɔː/"},
+        {word:"picture",chinese:"图片",phonetic:"/ˈpɪktʃər/"},
+        {word:"read",chinese:"读",phonetic:"/riːd/"},
+        {word:"book",chinese:"书",phonetic:"/bʊk/"},
+        {word:"science",chinese:"科学",phonetic:"/ˈsaɪəns/"},
+        {word:"computer",chinese:"电脑",phonetic:"/kəmˈpjuːtər/"},
+        {word:"math",chinese:"数学",phonetic:"/mæθ/"},
+        {word:"Chinese",chinese:"语文",phonetic:"/tʃaɪˈniːz/"},
+        {word:"English",chinese:"英语",phonetic:"/ˈɪŋɡlɪʃ/"},
+        {word:"PE",chinese:"体育",phonetic:"/ˌpiːˈiː/"},
+        {word:"class",chinese:"课",phonetic:"/klæs/"},
+        {word:"weekend",chinese:"周末",phonetic:"/ˈwiːkend/"},
+        {word:"Saturday",chinese:"星期六",phonetic:"/ˈsætərdeɪ/"},
+        {word:"Sunday",chinese:"星期日",phonetic:"/ˈsʌndeɪ/"},
+        {word:"do homework",chinese:"做作业",phonetic:"/duː ˈhoʊmwɜːrk/"},
+        {word:"watch TV",chinese:"看电视",phonetic:"/wɒtʃ tiː viː/"}
+    ]},
+    "5_上":{name:"五年级英语上册",words:[
+        {word:"young",chinese:"年轻的",phonetic:"/jʌŋ/"},
+        {word:"clever",chinese:"聪明的",phonetic:"/ˈklevər/"},
+        {word:"polite",chinese:"有礼貌的",phonetic:"/pəˈlaɪt/"},
+        {word:"shy",chinese:"害羞的",phonetic:"/ʃaɪ/"},
+        {word:"helpful",chinese:"有帮助的",phonetic:"/ˈhelpfəl/"},
+        {word:"hard-working",chinese:"勤奋的",phonetic:"/hɑːrd ˈwɜːrkɪŋ/"},
+        {word:"quiet",chinese:"安静的",phonetic:"/ˈkwaɪət/"},
+        {word:"active",chinese:"活跃的",phonetic:"/ˈæktɪv/"},
+        {word:"science",chinese:"科学",phonetic:"/ˈsaɪəns/"},
+        {word:"scientist",chinese:"科学家",phonetic:"/ˈsaɪəntɪst/"},
+        {word:"robot",chinese:"机器人",phonetic:"/ˈroʊbɑːt/"},
+        {word:"will",chinese:"将要",phonetic:"/wɪl/"},
+        {word:"might",chinese:"可能",phonetic:"/maɪt/"},
+        {word:"cook",chinese:"烹饪",phonetic:"/kʊk/"},
+        {word:"dancer",chinese:"舞蹈家",phonetic:"/ˈdænsər/"},
+        {word:"teacher",chinese:"教师",phonetic:"/ˈtiːtʃər/"},
+        {word:"doctor",chinese:"医生",phonetic:"/ˈdɑːktər/"},
+        {word:"driver",chinese:"司机",phonetic:"/ˈdraɪvər/"},
+        {word:"father",chinese:"父亲",phonetic:"/ˈfɑːðər/"},
+        {word:"brother",chinese:"兄弟",phonetic:"/ˈbrʌðər/"},
+        {word:"uncle",chinese:"叔叔",phonetic:"/ˈʌŋkəl/"},
+        {word:"cousin",chinese:"堂兄",phonetic:"/ˈkʌzən/"},
+        {word:"plant",chinese:"植物",phonetic:"/plænt/"},
+        {word:"usually",chinese:"通常",phonetic:"/ˈjuːʒuəli/"},
+        {word:"often",chinese:"经常",phonetic:"/ˈɔːfən/"},
+        {word:"sometimes",chinese:"有时",phonetic:"/ˈsʌmtaɪmz/"},
+        {word:"watch",chinese:"观看",phonetic:"/wɒtʃ/"},
+        {word:"shopping",chinese:"购物",phonetic:"/ˈʃɑːpɪŋ/"},
+        {word:"park",chinese:"公园",phonetic:"/pɑːrk/"},
+        {word:"tired",chinese:"累的",phonetic:"/ˈtaɪərd/"},
+        {word:"drink",chinese:"喝",phonetic:"/drɪŋk/"},
+        {word:"tea",chinese:"茶",phonetic:"/tiː/"},
+        {word:"e-mail",chinese:"电子邮件",phonetic:"/ˈiː meɪl/"},
+        {word:"write",chinese:"写",phonetic:"/raɪt/"},
+        {word:"grandparent",chinese:"祖父母",phonetic:"/ˈɡrænperənt/"},
+        {word:"weekend",chinese:"周末",phonetic:"/ˈwiːkend/"},
+        {word:"draw pictures",chinese:"画画",phonetic:"/drɔː ˈpɪktʃərz/"},
+        {word:"read books",chinese:"读书",phonetic:"/riːd bʊks/"},
+        {word:"play football",chinese:"踢足球",phonetic:"/pleɪ ˈfʊtbɔːl/"},
+        {word:"do homework",chinese:"做作业",phonetic:"/duː ˈhoʊmwɜːrk/"}
+    ]},
+    "5_下":{name:"五年级英语下册",words:[
+        {word:"spring",chinese:"春天",phonetic:"/sprɪŋ/"},
+        {word:"summer",chinese:"夏天",phonetic:"/ˈsʌmər/"},
+        {word:"autumn",chinese:"秋天",phonetic:"/ˈɔːtəm/"},
+        {word:"winter",chinese:"冬天",phonetic:"/ˈwɪntər/"},
+        {word:"season",chinese:"季节",phonetic:"/ˈsiːzən/"},
+        {word:"picnic",chinese:"野餐",phonetic:"/ˈpɪknɪk/"},
+        {word:"go on a picnic",chinese:"去野餐",phonetic:"/ɡoʊ ɑːn ə ˈpɪknɪk/"},
+        {word:"pick",chinese:"摘",phonetic:"/pɪk/"},
+        {word:"pick apples",chinese:"摘苹果",phonetic:"/pɪk ˈæpəlz/"},
+        {word:"good",chinese:"好的",phonetic:"/ɡʊd/"},
+        {word:"very much",chinese:"非常",phonetic:"/ˈveri mʌtʃ/"},
+        {word:"January",chinese:"一月",phonetic:"/ˈdʒænjuˌeri/"},
+        {word:"February",chinese:"二月",phonetic:"/ˈfebruˌeri/"},
+        {word:"March",chinese:"三月",phonetic:"/mɑːrtʃ/"},
+        {word:"April",chinese:"四月",phonetic:"/ˈeɪprəl/"},
+        {word:"May",chinese:"五月",phonetic:"/meɪ/"},
+        {word:"June",chinese:"六月",phonetic:"/dʒuːn/"},
+        {word:"July",chinese:"七月",phonetic:"/dʒuˈlaɪ/"},
+        {word:"August",chinese:"八月",phonetic:"/ˈɔːɡəst/"},
+        {word:"September",chinese:"九月",phonetic:"/sepˈtembər/"},
+        {word:"October",chinese:"十月",phonetic:"/ɑːkˈtoʊbər/"},
+        {word:"November",chinese:"十一月",phonetic:"/noʊˈvembər/"},
+        {word:"December",chinese:"十二月",phonetic:"/dɪˈsembər/"},
+        {word:"birthday",chinese:"生日",phonetic:"/ˈbɜːrθdeɪ/"},
+        {word:"Happy birthday!",chinese:"生日快乐!",phonetic:"/ˈhæpi bɜːrθdeɪ/"},
+        {word:"January 1st",chinese:"一月一日",phonetic:"/ˈdʒænjuˌeri fɜːrst/"},
+        {word:"Easter",chinese:"复活节",phonetic:"/ˈiːstər/"},
+        {word:"holiday",chinese:"假日",phonetic:"/ˈhɑːlədeɪ/"},
+        {word:"Christmas",chinese:"圣诞节",phonetic:"/ˈkrɪsməs/"},
+        {word:"few",chinese:"一些",phonetic:"/fjuː/"},
+        {word:"a few",chinese:"几个",phonetic:"/ə fjuː/"},
+        {word:"thing",chinese:"东西",phonetic:"/θɪŋ/"},
+        {word:"next",chinese:"下一个",phonetic:"/nekst/"},
+        {word:"different",chinese:"不同的",phonetic:"/ˈdɪfərənt/"},
+        {word:"ours",chinese:"我们的",phonetic:"/ˈaʊərz/"},
+        {word:"climbing",chinese:"攀登",phonetic:"/ˈklaɪmɪŋ/"},
+        {word:"eating",chinese:"吃",phonetic:"/ˈiːtɪŋ/"},
+        {word:"playing",chinese:"玩",phonetic:"/ˈpleɪɪŋ/"},
+        {word:"jumping",chinese:"跳",phonetic:"/ˈdʒʌmpɪŋ/"},
+        {word:"drinking",chinese:"喝",phonetic:"/ˈdrɪŋkɪŋ/"},
+        {word:"sleeping",chinese:"睡觉",phonetic:"/ˈsliːpɪŋ/"}
+    ]},
+    "6_上":{name:"六年级英语上册",words:[
+        {word:"straight",chinese:"直的",phonetic:"/streɪt/"},
+        {word:"left",chinese:"左边",phonetic:"/left/"},
+        {word:"right",chinese:"右边",phonetic:"/raɪt/"},
+        {word:"north",chinese:"北",phonetic:"/nɔːrθ/"},
+        {word:"south",chinese:"南",phonetic:"/saʊθ/"},
+        {word:"east",chinese:"东",phonetic:"/iːst/"},
+        {word:"west",chinese:"西",phonetic:"/west/"},
+        {word:"ask",chinese:"问",phonetic:"/æsk/"},
+        {word:"way",chinese:"路",phonetic:"/weɪ/"},
+        {word:"third",chinese:"第三",phonetic:"/θɜːrd/"},
+        {word:"tell",chinese:"告诉",phonetic:"/tel/"},
+        {word:"sir",chinese:"先生",phonetic:"/sɜːr/"},
+        {word:"down",chinese:"向下",phonetic:"/daʊn/"},
+        {word:"rest",chinese:"休息",phonetic:"/rest/"},
+        {word:"took",chinese:"拿",phonetic:"/tʊk/"},
+        {word:"different",chinese:"不同的",phonetic:"/ˈdɪfərənt/"},
+        {word:"post office",chinese:"邮局",phonetic:"/poʊst ˈɔːfɪs/"},
+        {word:"police station",chinese:"警察局",phonetic:"/pəˈliːs ˈsteɪʃən/"},
+        {word:"hospital",chinese:"医院",phonetic:"/ˈhɑːspɪtəl/"},
+        {word:"cinema",chinese:"电影院",phonetic:"/ˈsɪnəmə/"},
+        {word:"bookstore",chinese:"书店",phonetic:"/ˈbʊkstɔːr/"},
+        {word:"science museum",chinese:"科学博物馆",phonetic:"/ˈsaɪəns mjuˈziːəm/"},
+        {word:"restaurant",chinese:"餐馆",phonetic:"/ˈrestrɑːnt/"},
+        {word:"school",chinese:"学校",phonetic:"/skuːl/"},
+        {word:"where",chinese:"在哪里",phonetic:"/wer/"},
+        {word:"turn",chinese:"转弯",phonetic:"/tɜːrn/"},
+        {word:"go straight",chinese:"直走",phonetic:"/ɡoʊ streɪt/"},
+        {word:"turn left",chinese:"左转",phonetic:"/tɜːrn left/"},
+        {word:"turn right",chinese:"右转",phonetic:"/tɜːrn raɪt/"},
+        {word:"stop",chinese:"停",phonetic:"/stɑːp/"},
+        {word:"wait",chinese:"等",phonetic:"/weɪt/"},
+        {word:"attention",chinese:"注意",phonetic:"/əˈtenʃən/"},
+        {word:"traffic",chinese:"交通",phonetic:"/ˈtræfɪk/"},
+        {word:"light",chinese:"灯",phonetic:"/laɪt/"},
+        {word:"trip",chinese:"旅行",phonetic:"/trɪp/"},
+        {word:"evening",chinese:"晚上",phonetic:"/ˈiːvnɪŋ/"},
+        {word:"tonight",chinese:"今晚",phonetic:"/təˈnaɪt/"},
+        {word:"tomorrow",chinese:"明天",phonetic:"/təˈmɑːroʊ/"},
+        {word:"next week",chinese:"下周",phonetic:"/nekst wiːk/"},
+        {word:"dictionary",chinese:"词典",phonetic:"/ˈdɪkʃəneri/"},
+        {word:"comic",chinese:"漫画",phonetic:"/ˈkɑːmɪk/"},
+        {word:"word",chinese:"单词",phonetic:"/wɜːrd/"},
+        {word:"sentence",chinese:"句子",phonetic:"/ˈsentəns/"}
+    ]},
+    "6_下":{name:"六年级英语下册",words:[
+        {word:"yesterday",chinese:"昨天",phonetic:"/ˈjestərdeɪ/"},
+        {word:"the day before yesterday",chinese:"前天",phonetic:"/ðə deɪ bɪˈfɔːr ˈjestərdeɪ/"},
+        {word:"last week",chinese:"上周",phonetic:"/læst wiːk/"},
+        {word:"last month",chinese:"上个月",phonetic:"/læst mʌnθ/"},
+        {word:"last year",chinese:"去年",phonetic:"/læst jɪr/"},
+        {word:"last night",chinese:"昨晚",phonetic:"/læst naɪt/"},
+        {word:"watched",chinese:"观看(过去式)",phonetic:"/wɒtʃt/"},
+        {word:"cleaned",chinese:"打扫(过去式)",phonetic:"/kliːnd/"},
+        {word:"played",chinese:"玩(过去式)",phonetic:"/pleɪd/"},
+        {word:"visited",chinese:"拜访(过去式)",phonetic:"/ˈvɪzɪtɪd/"},
+        {word:"had",chinese:"有(过去式)",phonetic:"/hæd/"},
+        {word:"read",chinese:"读(过去式)",phonetic:"/red/"},
+        {word:"saw",chinese:"看见(过去式)",phonetic:"/sɔː/"},
+        {word:"went",chinese:"去(过去式)",phonetic:"/went/"},
+        {word:"did",chinese:"做(过去式)",phonetic:"/dɪd/"},
+        {word:"slept",chinese:"睡觉(过去式)",phonetic:"/slept/"},
+        {word:"stayed",chinese:"停留(过去式)",phonetic:"/steɪd/"},
+        {word:"studied",chinese:"学习(过去式)",phonetic:"/ˈstʌdid/"},
+        {word:"felt",chinese:"感觉(过去式)",phonetic:"/felt/"},
+        {word:"bought",chinese:"买(过去式)",phonetic:"/bɔːt/"},
+        {word:"ate",chinese:"吃(过去式)",phonetic:"/eɪt/"},
+        {word:"became",chinese:"变成(过去式)",phonetic:"/bɪˈkeɪm/"},
+        {word:"come",chinese:"来",phonetic:"/kʌm/"},
+        {word:"came",chinese:"来(过去式)",phonetic:"/keɪm/"},
+        {word:"go",chinese:"去",phonetic:"/ɡoʊ/"},
+        {word:"goes",chinese:"去(第三人称)",phonetic:"/ɡoʊz/"},
+        {word:"fly",chinese:"飞",phonetic:"/flaɪ/"},
+        {word:"flew",chinese:"飞(过去式)",phonetic:"/fluː/"},
+        {word:"return",chinese:"返回",phonetic:"/rɪˈtɜːrn/"},
+        {word:"leave",chinese:"离开",phonetic:"/liːv/"},
+        {word:"left",chinese:"离开(过去式)",phonetic:"/left/"},
+        {word:"dream",chinese:"梦想",phonetic:"/driːm/"},
+        {word:"tall",chinese:"高的",phonetic:"/tɔːl/"},
+        {word:"short",chinese:"矮的",phonetic:"/ʃɔːrt/"},
+        {word:"stronger",chinese:"更强壮",phonetic:"/strɔːŋɡər/"},
+        {word:"thinner",chinese:"更瘦",phonetic:"/θɪnər/"},
+        {word:"heavier",chinese:"更重",phonetic:"/ˈhevɪər/"},
+        {word:"older",chinese:"更老",phonetic:"/ˈoʊldər/"},
+        {word:"younger",chinese:"更年轻",phonetic:"/ˈjʌŋɡər/"},
+        {word:"bigger",chinese:"更大",phonetic:"/ˈbɪɡər/"},
+        {word:"smaller",chinese:"更小",phonetic:"/ˈsmɔːlər/"},
+        {word:"longer",chinese:"更长",phonetic:"/ˈlɔːŋɡər/"},
+        {word:"shorter",chinese:"更短",phonetic:"/ˈʃɔːrtər/"}
+    ]},
+    // 初中英语
+    "7_上":{name:"七年级英语上册",words:[
+        {word:"good morning",chinese:"早上好",phonetic:"/ɡʊd ˈmɔːrnɪŋ/"},
+        {word:"good afternoon",chinese:"下午好",phonetic:"/ɡʊd ˌæftərˈnuːn/"},
+        {word:"good evening",chinese:"晚上好",phonetic:"/ɡʊd ˈiːvnɪŋ/"},
+        {word:"nice to meet you",chinese:"很高兴认识你",phonetic:"/naɪs tuː miːt juː/"},
+        {word:"first name",chinese:"名",phonetic:"/fɜːrst neɪm/"},
+        {word:"last name",chinese:"姓",phonetic:"/læst neɪm/"},
+        {word:"telephone",chinese:"电话",phonetic:"/ˈtelɪfoʊn/"},
+        {word:"number",chinese:"号码",phonetic:"/ˈnʌmbər/"},
+        {word:"pen pal",chinese:"笔友",phonetic:"/pen pæl/"},
+        {word:"China",chinese:"中国",phonetic:"/ˈtʃaɪnə/"},
+        {word:"Canada",chinese:"加拿大",phonetic:"/ˈkænədə/"},
+        {word:"Australia",chinese:"澳大利亚",phonetic:"/ɔːˈstreɪliə/"},
+        {word:"Japan",chinese:"日本",phonetic:"/dʒəˈpæn/"},
+        {word:"American",chinese:"美国人",phonetic:"/əˈmerɪkən/"},
+        {word:"address",chinese:"地址",phonetic:"/əˈdres/"},
+        {word:"email",chinese:"电子邮件",phonetic:"/ˈiːmeɪl/"},
+        {word:"family",chinese:"家庭",phonetic:"/ˈfæməli/"},
+        {word:"mother",chinese:"母亲",phonetic:"/ˈmʌðər/"},
+        {word:"father",chinese:"父亲",phonetic:"/ˈfɑːðər/"},
+        {word:"parent",chinese:"父母",phonetic:"/ˈperənt/"},
+        {word:"brother",chinese:"兄弟",phonetic:"/ˈbrʌðər/"},
+        {word:"sister",chinese:"姐妹",phonetic:"/ˈsɪstər/"},
+        {word:"grandmother",chinese:"祖母",phonetic:"/ˈɡrænmʌðər/"},
+        {word:"grandfather",chinese:"祖父",phonetic:"/ˈɡrænfɑːðər/"},
+        {word:"friend",chinese:"朋友",phonetic:"/frend/"},
+        {word:"dog",chinese:"狗",phonetic:"/dɔːɡ/"},
+        {word:"cat",chinese:"猫",phonetic:"/kæt/"},
+        {word:"photo",chinese:"照片",phonetic:"/ˈfoʊtoʊ/"},
+        {word:" volleyball",chinese:"排球",phonetic:"/ˈvɒlibɔːl/"},
+        {word:"basketball",chinese:"篮球",phonetic:"/ˈbæskɪtbɔːl/"},
+        {word:"tennis",chinese:"网球",phonetic:"/ˈtenɪs/"},
+        {word:"soccer",chinese:"足球",phonetic:"/ˈsɑːkər/"},
+        {word:"ball",chinese:"球",phonetic:"/bɔːl/"},
+        {word:"game",chinese:"游戏",phonetic:"/ɡeɪm/"},
+        {word:"like",chinese:"喜欢",phonetic:"/laɪk/"},
+        {word:"play",chinese:"玩",phonetic:"/pleɪ/"},
+        {word:"watch",chinese:"观看",phonetic:"/wɒtʃ/"},
+        {word:"interesting",chinese:"有趣的",phonetic:"/ˈɪntrəstɪŋ/"},
+        {word:"boring",chinese:"无聊的",phonetic:"/ˈbɔːrɪŋ/"},
+        {word:"difficult",chinese:"困难的",phonetic:"/ˈdɪfɪkəlt/"},
+        {word:"easy",chinese:"容易的",phonetic:"/ˈiːzi/"}
+    ]},
+    "7_下":{name:"七年级英语下册",words:[
+        {word:"guitar",chinese:"吉他",phonetic:"/ɡɪˈtɑːr/"},
+        {word:"sing",chinese:"唱歌",phonetic:"/sɪŋ/"},
+        {word:"dance",chinese:"跳舞",phonetic:"/dæns/"},
+        {word:"swim",chinese:"游泳",phonetic:"/swɪm/"},
+        {word:"draw",chinese:"画画",phonetic:"/drɔː/"},
+        {word:"chess",chinese:"国际象棋",phonetic:"/tʃes/"},
+        {word:"paint",chinese:"绘画",phonetic:"/peɪnt/"},
+        {word:"play the guitar",chinese:"弹吉他",phonetic:"/pleɪ ðə ɡɪˈtɑːr/"},
+        {word:"join",chinese:"参加",phonetic:"/dʒɔɪn/"},
+        {word:"club",chinese:"俱乐部",phonetic:"/klʌb/"},
+        {word:"tell",chinese:"告诉",phonetic:"/tel/"},
+        {word:"story",chinese:"故事",phonetic:"/ˈstɔːri/"},
+        {word:"write",chinese:"写",phonetic:"/raɪt/"},
+        {word:"good at",chinese:"擅长",phonetic:"/ɡʊd æt/"},
+        {word:"also",chinese:"也",phonetic:"/ˈɔːlsoʊ/"},
+        {word:"band",chinese:"乐队",phonetic:"/bænd/"},
+        {word:"busy",chinese:"忙的",phonetic:"/ˈbɪzi/"},
+        {word:"strict",chinese:"严格的",phonetic:"/strɪkt/"},
+        {word:"friendly",chinese:"友好的",phonetic:"/ˈfrendli/"},
+        {word:"clever",chinese:"聪明的",phonetic:"/ˈklevər/"},
+        {word:"love",chinese:"爱",phonetic:"/lʌv/"},
+        {word:"help",chinese:"帮助",phonetic:"/help/"},
+        {word:"money",chinese:"钱",phonetic:"/ˈmʌni/"},
+        {word:"time",chinese:"时间",phonetic:"/taɪm/"},
+        {word:"morning",chinese:"早上",phonetic:"/ˈmɔːrnɪŋ/"},
+        {word:"afternoon",chinese:"下午",phonetic:"/ˌæftərˈnuːn/"},
+        {word:"evening",chinese:"晚上",phonetic:"/ˈiːvnɪŋ/"},
+        {word:"night",chinese:"夜晚",phonetic:"/naɪt/"},
+        {word:"homework",chinese:"作业",phonetic:"/ˈhoʊmwɜːrk/"},
+        {word:"start",chinese:"开始",phonetic:"/stɑːrt/"},
+        {word:"late",chinese:"迟到",phonetic:"/leɪt/"},
+        {word:"job",chinese:"工作",phonetic:"/dʒɑːb/"},
+        {word:"work",chinese:"工作",phonetic:"/wɜːrk/"},
+        {word:"station",chinese:"车站",phonetic:"/ˈsteɪʃən/"},
+        {word:"hospital",chinese:"医院",phonetic:"/ˈhɑːspɪtəl/"},
+        {word:"restaurant",chinese:"餐馆",phonetic:"/ˈrestrɑːnt/"},
+        {word:"bank",chinese:"银行",phonetic:"/bæŋk/"},
+        {word:"pay",chinese:"支付",phonetic:"/peɪ/"},
+        {word:"near",chinese:"附近",phonetic:"/nɪr/"},
+        {word:"across",chinese:"穿过",phonetic:"/əˈkrɔːs/"},
+        {word:"across from",chinese:"在...对面",phonetic:"/əˈkrɔːs frʌm/"},
+        {word:"front",chinese:"前面",phonetic:"/frʌnt/"}
+    ]},
+    "8_上":{name:"八年级英语上册",words:[
+        {word:"vacation",chinese:"假期",phonetic:"/veɪˈkeɪʃən/"},
+        {word:"somewhere",chinese:"某处",phonetic:"/ˈsʌmwer/"},
+        {word:"anyone",chinese:"任何人",phonetic:"/ˈeniwʌn/"},
+        {word:"wonderful",chinese:"精彩的",phonetic:"/ˈwʌndərfəl/"},
+        {word:"quite a few",chinese:"相当多",phonetic:"/kwaɪt ə fjuː/"},
+        {word:"of course",chinese:"当然",phonetic:"/əv kɔːrs/"},
+        {word:"feel",chinese:"感觉",phonetic:"/fiːl/"},
+        {word:"leave",chinese:"离开",phonetic:"/liːv/"},
+        {word:"decide",chinese:"决定",phonetic:"/dɪˈsaɪd/"},
+        {word:"try",chinese:"尝试",phonetic:"/traɪ/"},
+        {word:"walk",chinese:"走路",phonetic:"/wɔːk/"},
+        {word:"wonder",chinese:"想知道",phonetic:"/ˈwʌndər/"},
+        {word:"difference",chinese:"差异",phonetic:"/ˈdɪfərəns/"},
+        {word:"enough",chinese:"足够的",phonetic:"/ɪˈnʌf/"},
+        {word:"food",chinese:"食物",phonetic:"/fuːd/"},
+        {word:"rain",chinese:"雨",phonetic:"/reɪn/"},
+        {word:"cloudy",chinese:"多云的",phonetic:"/ˈklaʊdi/"},
+        {word:"sunny",chinese:"晴朗的",phonetic:"/ˈsʌni/"},
+        {word:"windy",chinese:"有风的",phonetic:"/ˈwɪndi/"},
+        {word:"snowy",chinese:"下雪的",phonetic:"/ˈsnoʊi/"},
+        {word:"rainy",chinese:"下雨的",phonetic:"/ˈreɪni/"},
+        {word:"weather",chinese:"天气",phonetic:"/ˈweðər/"},
+        {word:"cook",chinese:"烹饪",phonetic:"/kʊk/"},
+        {word:"work",chinese:"工作",phonetic:"/wɜːrk/"},
+        {word:"study",chinese:"学习",phonetic:"/ˈstʌdi/"},
+        {word:"bad",chinese:"坏的",phonetic:"/bæd/"},
+        {word:"terrible",chinese:"糟糕的",phonetic:"/ˈterəbəl/"},
+        {word:"pretty",chinese:"相当",phonetic:"/ˈprɪti/"},
+        {word:"message",chinese:"消息",phonetic:"/ˈmesɪdʒ/"},
+        {word:"back",chinese:"背部",phonetic:"/bæk/"},
+        {word:"call",chinese:"打电话",phonetic:"/kɔːl/"},
+        {word:"again",chinese:"再次",phonetic:"/əˈɡen/"},
+        {word:"without",chinese:"没有",phonetic:"/wɪˈðaʊt/"},
+        {word:"shy",chinese:"害羞的",phonetic:"/ʃaɪ/"},
+        {word:"proud",chinese:"骄傲的",phonetic:"/praʊd/"},
+        {word:"score",chinese:"得分",phonetic:"/skɔːr/"},
+        {word:"introduce",chinese:"介绍",phonetic:"/ˌɪntrəˈduːs/"},
+        {word:"patient",chinese:"耐心的",phonetic:"/ˈpeɪʃənt/"},
+        {word:"energetic",chinese:"精力充沛的",phonetic:"/ˌenərˈdʒetɪk/"},
+        {word:"conversation",chinese:"对话",phonetic:"/ˌkɑːnvərˈseɪʃən/"}
+    ]},
+    "8_下":{name:"八年级英语下册",words:[
+        {word:"matter",chinese:"事情",phonetic:"/ˈmætər/"},
+        {word:"hurt",chinese:"疼痛",phonetic:"/hɜːrt/"},
+        {word:"headache",chinese:"头痛",phonetic:"/ˈhedeɪk/"},
+        {word:"stomachache",chinese:"胃痛",phonetic:"/ˈstʌməkeɪk/"},
+        {word:"fever",chinese:"发烧",phonetic:"/ˈfiːvər/"},
+        {word:"cold",chinese:"感冒",phonetic:"/koʊld/"},
+        {word:"have a cold",chinese:"感冒",phonetic:"/hæv ə koʊld/"},
+        {word:"rest",chinese:"休息",phonetic:"/rest/"},
+        {word:"honey",chinese:"蜂蜜",phonetic:"/ˈhʌni/"},
+        {word:"water",chinese:"水",phonetic:"/ˈwɔːtər/"},
+        {word:"should",chinese:"应该",phonetic:"/ʃʊd/"},
+        {word:"health",chinese:"健康",phonetic:"/helθ/"},
+        {word:"wealth",chinese:"财富",phonetic:"/welθ/"},
+        {word:"diet",chinese:"饮食",phonetic:"/ˈdaɪət/"},
+        {word:"important",chinese:"重要的",phonetic:"/ɪmˈpɔːrtənt/"},
+        {word:"balanced",chinese:"均衡的",phonetic:"/ˈbælənst/"},
+        {word:"vegetable",chinese:"蔬菜",phonetic:"/ˈvedʒtəbəl/"},
+        {word:"fruit",chinese:"水果",phonetic:"/fruːt/"},
+        {word:"coffee",chinese:"咖啡",phonetic:"/ˈkɔːfi/"},
+        {word:"energy",chinese:"能量",phonetic:"/ˈenərdʒi/"},
+        {word:"throat",chinese:"喉咙",phonetic:"/θroʊt/"},
+        {word:"lie",chinese:"躺",phonetic:"/laɪ/"},
+        {word:"lie down",chinese:"躺下",phonetic:"/laɪ daʊn/"},
+        {word:"X-ray",chinese:"X光",phonetic:"/ˈeks reɪ/"},
+        {word:"toothache",chinese:"牙痛",phonetic:"/ˈtuːθeɪk/"},
+        {word:"bandage",chinese:"绷带",phonetic:"/ˈbændɪdʒ/"},
+        {word:"medicine",chinese:"药",phonetic:"/ˈmedɪsən/"},
+        {word:"accident",chinese:"事故",phonetic:"/ˈæksɪdənt/"},
+        {word:"important",chinese:"重要的",phonetic:"/ɪmˈpɔːrtənt/"},
+        {word:"decision",chinese:"决定",phonetic:"/dɪˈsɪʒən/"},
+        {word:"make a decision",chinese:"做决定",phonetic:"/meɪk ə dɪˈsɪʒən/"},
+        {word:"step",chinese:"步骤",phonetic:"/step/"},
+        {word:"trust",chinese:"信任",phonetic:"/trʌst/"},
+        {word:"experience",chinese:"经验",phonetic:"/ɪkˈspɪəriəns/"},
+        {word:"teen",chinese:"青少年",phonetic:"/tiːn/"},
+        {word:"allow",chinese:"允许",phonetic:"/əˈlaʊ/"},
+        {word:"wrong",chinese:"错误的",phonetic:"/rɔːŋ/"},
+        {word:"guess",chinese:"猜",phonetic:"/ɡes/"},
+        {word:"deal",chinese:"处理",phonetic:"/diːl/"},
+        {word:"trouble",chinese:"麻烦",phonetic:"/ˈtrʌbəl/"}
+    ]},
+    "9_全":{name:"九年级英语全册",words:[
+        {word:"pronunciation",chinese:"发音",phonetic:"/prəˌnʌnsiˈeɪʃən/"},
+        {word:"increase",chinese:"增加",phonetic:"/ɪnˈkriːs/"},
+        {word:"ability",chinese:"能力",phonetic:"/əˈbɪləti/"},
+        {word:"create",chinese:"创造",phonetic:"/kriˈeɪt/"},
+        {word:"brain",chinese:"大脑",phonetic:"/breɪn/"},
+        {word:"active",chinese:"活跃的",phonetic:"/ˈæktɪv/"},
+        {word:"attention",chinese:"注意力",phonetic:"/əˈtenʃən/"},
+        {word:"connect",chinese:"连接",phonetic:"/kəˈnekt/"},
+        {word:"associate",chinese:"联系",phonetic:"/əˈsoʊʃieɪt/"},
+        {word:"knowledge",chinese:"知识",phonetic:"/ˈnɑːlɪdʒ/"},
+        {word:"review",chinese:"复习",phonetic:"/rɪˈvjuː/"},
+        {word:"manage",chinese:"管理",phonetic:"/ˈmænɪdʒ/"},
+        {word:"promise",chinese:"承诺",phonetic:"/ˈprɑːmɪs/"},
+        {word:"improvement",chinese:"改进",phonetic:"/ɪmˈpruːvmənt/"},
+        {word:"take notes",chinese:"记笔记",phonetic:"/teɪk noʊts/"},
+        {word:"memorize",chinese:"记忆",phonetic:"/ˈmeməraɪz/"},
+        {word:"pattern",chinese:"模式",phonetic:"/ˈpætərn/"},
+        {word:"discuss",chinese:"讨论",phonetic:"/dɪˈskʌs/"},
+        {word:"sentence",chinese:"句子",phonetic:"/ˈsentəns/"},
+        {word:"spelling",chinese:"拼写",phonetic:"/ˈspelɪŋ/"},
+        {word:"pronounce",chinese:"发音",phonetic:"/prəˈnaʊns/"},
+        {word:"graduated",chinese:"毕业",phonetic:"/ˈɡrædʒueɪtɪd/"},
+        {word:"ceremony",chinese:"典礼",phonetic:"/ˈserəmoʊni/"},
+        {word:"congratulation",chinese:"祝贺",phonetic:"/kənˌɡrætʃuˈleɪʃən/"},
+        {word:"future",chinese:"未来",phonetic:"/ˈfjuːtʃər/"},
+        {word:"purpose",chinese:"目的",phonetic:"/ˈpɜːrpəs/"},
+        {word:"receive",chinese:"接收",phonetic:"/rɪˈsiːv/"},
+        {word:"college",chinese:"大学",phonetic:"/ˈkɑːlɪdʒ/"},
+        {word:"education",chinese:"教育",phonetic:"/ˌedʒuˈkeɪʃən/"},
+        {word:"engineer",chinese:"工程师",phonetic:"/ˌendʒɪˈnɪr/"},
+        {word:"medicine",chinese:"医学",phonetic:"/ˈmedɪsən/"},
+        {word:"university",chinese:"大学",phonetic:"/ˌjuːnɪˈvɜːrsəti/"},
+        {word:"agriculture",chinese:"农业",phonetic:"/ˈæɡrɪkʌltʃər/"},
+        {word:"education",chinese:"教育",phonetic:"/ˌedʒuˈkeɪʃən/"},
+        {word:"tourism",chinese:"旅游业",phonetic:"/ˈtʊrɪzəm/"},
+        {word:"cooking",chinese:"烹饪",phonetic:"/ˈkʊkɪŋ/"},
+        {word:"experience",chinese:"经验",phonetic:"/ɪkˈspɪəriəns/"},
+        {word:"volunteer",chinese:"志愿者",phonetic:"/ˌvɑːlənˈtɪr/"},
+        {word:"knowledge",chinese:"知识",phonetic:"/ˈnɑːlɪdʒ/"},
+        {word:"努力",chinese:"努力",phonetic:"/ˈefərt/"}
+    ]},
+    // 高中英语
+    "10_必一":{name:"高一英语必修一",words:[
+        {word:"teenage",chinese:"青少年的",phonetic:"/ˈtiːneɪdʒ/"},
+        {word:"volunteer",chinese:"志愿者",phonetic:"/ˌvɑːlənˈtɪr/"},
+        {word:"challenge",chinese:"挑战",phonetic:"/ˈtʃælɪndʒ/"},
+        {word:"opinion",chinese:"观点",phonetic:"/əˈpɪnjən/"},
+        {word:"identity",chinese:"身份",phonetic:"/aɪˈdentəti/"},
+        {word:"behaviour",chinese:"行为",phonetic:"/bɪˈheɪvjər/"},
+        {word:"generation",chinese:"一代人",phonetic:"/ˌdʒenəˈreɪʃən/"},
+        {word:"addicted",chinese:"上瘾的",phonetic:"/əˈdɪktɪd/"},
+        {word:"adult",chinese:"成年人",phonetic:"/əˈdʌlt/"},
+        {word:"短语",chinese:"短语",phonetic:"/ˈfræz/"},
+        {word:"damage",chinese:"损害",phonetic:"/ˈdæmɪdʒ/"},
+        {word:"decade",chinese:"十年",phonetic:"/ˈdekeɪd/"},
+        {word:"social",chinese:"社会的",phonetic:"/ˈsoʊʃəl/"},
+        {word:"platform",chinese:"平台",phonetic:"/ˈplætfɔːrm/"},
+        {word:"benefit",chinese:"益处",phonetic:"/ˈbenɪfɪt/"},
+        {word:"creative",chinese:"创造性的",phonetic:"/kriˈeɪtɪv/"},
+        {word:"influential",chinese:"有影响力的",phonetic:"/ˌɪnfluˈenʃəl/"},
+        {word:"media",chinese:"媒体",phonetic:"/ˈmiːdiə/"},
+        {word:"violence",chinese:"暴力",phonetic:"/ˈvaɪələns/"},
+        {word:"racism",chinese:"种族主义",phonetic:"/ˈreɪsɪzəm/"},
+        {word:"apply",chinese:"申请",phonetic:"/əˈplaɪ/"},
+        {word:"capable",chinese:"有能力的",phonetic:"/ˈkeɪpəbəl/"},
+        {word:"responsibility",chinese:"责任",phonetic:"/rɪˌspɑːnsəˈbɪləti/"},
+        {word:"action",chinese:"行动",phonetic:"/ˈækʃən/"},
+        {word:"explore",chinese:"探索",phonetic:"/ɪkˈsplɔːr/"},
+        {word:"journalist",chinese:"记者",phonetic:"/ˈdʒɜːrnəlɪst/"},
+        {word:"photographer",chinese:"摄影师",phonetic:"/fəˈtɑːɡrəfər/"},
+        {word:"composer",chinese:"作曲家",phonetic:"/kəmˈpoʊzər/"},
+        {word:"musician",chinese:"音乐家",phonetic:"/mjuˈzɪʃən/"},
+        {word:"talent",chinese:"才能",phonetic:"/ˈtælənt/"},
+        {word:"performer",chinese:"表演者",phonetic:"/pərˈfɔːrmər/"},
+        {word:"artist",chinese:"艺术家",phonetic:"/ˈɑːrtɪst/"},
+        {word:"traditional",chinese:"传统的",phonetic:"/trəˈdɪʃənəl/"},
+        {word:"modern",chinese:"现代的",phonetic:"/ˈmɑːdərn/"},
+        {word:"magic",chinese:"魔术",phonetic:"/ˈmædʒɪk/"},
+        {word:"perform",chinese:"表演",phonetic:"/pərˈfɔːrm/"},
+        {word:"impress",chinese:"给...深刻印象",phonetic:"/ɪmˈpres/"},
+        {word:"convince",chinese:"说服",phonetic:"/kənˈvɪns/"},
+        {word:"appear",chinese:"出现",phonetic:"/əˈpɪr/"}
+    ]},
+    "10_必二":{name:"高一英语必修二",words:[
+        {word:"heritage",chinese:"遗产",phonetic:"/ˈherɪtɪdʒ/"},
+        {word:"preserve",chinese:"保护",phonetic:"/prɪˈzɜːrv/"},
+        {word:"temple",chinese:"寺庙",phonetic:"/ˈtempəl/"},
+        {word:"ruins",chinese:"废墟",phonetic:"/ˈruːɪnz/"},
+        {word:"history",chinese:"历史",phonetic:"/ˈhɪstəri/"},
+        {word:"figure",chinese:"人物",phonetic:"/ˈfɪɡjər/"},
+        {word:"dynasty",chinese:"朝代",phonetic:"/ˈdaɪnəsti/"},
+        {word:"wonder",chinese:"奇迹",phonetic:"/ˈwʌndər/"},
+        {word:"widespread",chinese:"普遍的",phonetic:"/ˈwaɪdspred/"},
+        {word:"architect",chinese:"建筑师",phonetic:"/ˈɑːrkɪtekt/"},
+        {word:"design",chinese:"设计",phonetic:"/dɪˈzaɪn/"},
+        {word:"civilization",chinese:"文明",phonetic:"/ˌsɪvələˈzeɪʃən/"},
+        {word:"culture",chinese:"文化",phonetic:"/ˈkʌltʃər/"},
+        {word:"religion",chinese:"宗教",phonetic:"/rɪˈlɪdʒən/"},
+        {word:"evidence",chinese:"证据",phonetic:"/ˈevɪdəns/"},
+        {word:"survive",chinese:"幸存",phonetic:"/sərˈvaɪv/"},
+        {word:"fossil",chinese:"化石",phonetic:"/ˈfɑːsəl/"},
+        {word:"anthropologist",chinese:"人类学家",phonetic:"/ˌænθrəpəˈlɑːdʒɪst/"},
+        {word:"origin",chinese:"起源",phonetic:"/ˈɔːrɪdʒɪn/"},
+        {word:"racial",chinese:"种族的",phonetic:"/ˈreɪʃəl/"},
+        {word:"festival",chinese:"节日",phonetic:"/ˈfestɪvəl/"},
+        {word:"celebration",chinese:"庆祝",phonetic:"/ˌseləˈbreɪʃən/"},
+        {word:"decorate",chinese:"装饰",phonetic:"/ˈdekəreɪt/"},
+        {word:"belief",chinese:"信仰",phonetic:"/bɪˈliːf/"},
+        {word:"ceremony",chinese:"仪式",phonetic:"/ˈserəmoʊni/"},
+        {word:"feast",chinese:"盛宴",phonetic:"/fiːst/"},
+        {word:"significant",chinese:"重要的",phonetic:"/sɪɡˈnɪfɪkənt/"},
+        {word:"display",chinese:"展示",phonetic:"/dɪˈspleɪ/"},
+        {word:"occasion",chinese:"场合",phonetic:"/əˈkeɪʒən/"},
+        {word:"broadcast",chinese:"广播",phonetic:"/ˈbrɔːdkæst/"},
+        {word:"confusing",chinese:"令人困惑的",phonetic:"/kənˈfjuːzɪŋ/"},
+        {word:"impressive",chinese:"令人印象深刻的",phonetic:"/ɪmˈpresɪv/"},
+        {word:"photograph",chinese:"照片",phonetic:"/ˈfoʊtəɡræf/"},
+        {word:"represent",chinese:"代表",phonetic:"/ˌreprɪˈzent/"},
+        {word:"exhibition",chinese:"展览",phonetic:"/ˌeksɪˈbɪʃən/"},
+        {word:"technique",chinese:"技术",phonetic:"/tekˈniːk/"},
+        {word:"contemporary",chinese:"当代的",phonetic:"/kənˈtempəreri/"},
+        {word:"masterpiece",chinese:"杰作",phonetic:"/ˈmæstərpiːs/"},
+        {word:"abstract",chinese:"抽象的",phonetic:"/æbˈstrækt/"}
+    ]},
+    "11_选必一":{name:"高二英语选择性必修一",words:[
+        {word:"phenomenon",chinese:"现象",phonetic:"/fəˈnɑːmɪnən/"},
+        {word:"circumstance",chinese:"环境",phonetic:"/ˈsɜːrkəmstæns/"},
+        {word:"comment",chinese:"评论",phonetic:"/ˈkɑːment/"},
+        {word:"obtain",chinese:"获得",phonetic:"/əbˈteɪn/"},
+        {word:"assist",chinese:"协助",phonetic:"/əˈsɪst/"},
+        {word:"acquire",chinese:"获取",phonetic:"/əˈkwaɪər/"},
+        {word:"conduct",chinese:"实施",phonetic:"/kənˈdʌkt/"},
+        {word:"process",chinese:"过程",phonetic:"/ˈprɑːses/"},
+        {word:"conclusion",chinese:"结论",phonetic:"/kənˈkluːʒən/"},
+        {word:"contribution",chinese:"贡献",phonetic:"/ˌkɑːntrɪˈbjuːʃən/"},
+        {word:"significant",chinese:"重要的",phonetic:"/sɪɡˈnɪfɪkənt/"},
+        {word:"revolution",chinese:"革命",phonetic:"/ˌrevəˈluːʃən/"},
+        {word:"scientist",chinese:"科学家",phonetic:"/ˈsaɪəntɪst/"},
+        {word:"physicist",chinese:"物理学家",phonetic:"/ˈfɪzɪsɪst/"},
+        {word:"chemist",chinese:"化学家",phonetic:"/ˈkemɪst/"},
+        {word:"biologist",chinese:"生物学家",phonetic:"/baɪˈɑːlədʒɪst/"},
+        {word:"theory",chinese:"理论",phonetic:"/ˈθɪri/"},
+        {word:"hypothesis",chinese:"假设",phonetic:"/haɪˈpɑːθəsɪs/"},
+        {word:"experiment",chinese:"实验",phonetic:"/ɪkˈsperɪmənt/"},
+        {word:"analysis",chinese:"分析",phonetic:"/əˈnæləsɪs/"},
+        {word:"conclusion",chinese:"结论",phonetic:"/kənˈkluːʒən/"},
+        {word:"evidence",chinese:"证据",phonetic:"/ˈevɪdəns/"},
+        {word:"discover",chinese:"发现",phonetic:"/dɪˈskʌvər/"},
+        {word:"research",chinese:"研究",phonetic:"/rɪˈsɜːrtʃ/"},
+        {word:"method",chinese:"方法",phonetic:"/ˈmeθəd/"},
+        {word:"result",chinese:"结果",phonetic:"/rɪˈzʌlt/"},
+        {word:"conclusion",chinese:"结论",phonetic:"/kənˈkluːʒən/"},
+        {word:"theory",chinese:"理论",phonetic:"/ˈθɪri/"},
+        {word:"law",chinese:"定律",phonetic:"/lɔː/"},
+        {word:"principle",chinese:"原理",phonetic:"/ˈprɪnsəpəl/"},
+        {word:"apply",chinese:"应用",phonetic:"/əˈplaɪ/"},
+        {word:"technology",chinese:"技术",phonetic:"/tekˈnɑːlədʒi/"},
+        {word:"innovation",chinese:"创新",phonetic:"/ˌɪnəˈveɪʃən/"},
+        {word:"development",chinese:"发展",phonetic:"/dɪˈveləpmənt/"},
+        {word:"application",chinese:"应用",phonetic:"/ˌæplɪˈkeɪʃən/"},
+        {word:"device",chinese:"设备",phonetic:"/dɪˈvaɪs/"},
+        {word:"benefit",chinese:"益处",phonetic:"/ˈbenɪfɪt/"},
+        {word:"impact",chinese:"影响",phonetic:"/ˈɪmpækt/"},
+        {word:"influence",chinese:"影响",phonetic:"/ˈɪnfluəns/"}
+    ]},
+    "11_选必二":{name:"高二英语选择性必修二",words:[
+        {word:"highlight",chinese:"亮点",phonetic:"/ˈhaɪlaɪt/"},
+        {word:"选修",chinese:"选修",phonetic:"/ɪˈlektɪv/"},
+        {word:"requirement",chinese:"要求",phonetic:"/rɪˈkwaɪərmənt/"},
+        {word:"compulsory",chinese:"必修的",phonetic:"/kəmˈpʌlsəri/"},
+        {word:"graduate",chinese:"毕业",phonetic:"/ˈɡrædʒueɪt/"},
+        {word:"campus",chinese:"校园",phonetic:"/ˈkæmpəs/"},
+        {word:"facility",chinese:"设施",phonetic:"/fəˈsɪləti/"},
+        {word:"laboratory",chinese:"实验室",phonetic:"/ˈlæbrətɔːri/"},
+        {word:"library",chinese:"图书馆",phonetic:"/ˈlaɪbreri/"},
+        {word:"dormitory",chinese:"宿舍",phonetic:"/ˈdɔːrmətɔːri/"},
+        {word:"cafeteria",chinese:"自助餐厅",phonetic:"/kəˈfiːtɪəriə/"},
+        {word:"gymnasium",chinese:"体育馆",phonetic:"/dʒɪmˈneɪziəm/"},
+        {word:"auditorium",chinese:"礼堂",phonetic:"/ˌɔːdɪˈtɔːriəm/"},
+        {word:"scholarship",chinese:"奖学金",phonetic:"/ˈskɑːlərʃɪp/"},
+        {word:"opportunity",chinese:"机会",phonetic:"/ˌɑːpərˈtuːnəti/"},
+        {word:"experience",chinese:"经验",phonetic:"/ɪkˈspɪəriəns/"},
+        {word:"challenge",chinese:"挑战",phonetic:"/ˈtʃælɪndʒ/"},
+        {word:"participate",chinese:"参与",phonetic:"/pɑːrˈtɪsɪpeɪt/"},
+        {word:"extracurricular",chinese:"课外的",phonetic:"/ˌekstrəkəˈrɪkjələr/"},
+        {word:"volunteer",chinese:"志愿者",phonetic:"/ˌvɑːlənˈtɪr/"},
+        {word:"activity",chinese:"活动",phonetic:"/ækˈtɪvəti/"},
+        {word:"achievement",chinese:"成就",phonetic:"/əˈtʃiːvmənt/"},
+        {word:"preparation",chinese:"准备",phonetic:"/ˌprepəˈreɪʃən/"},
+        {word:"examination",chinese:"考试",phonetic:"/ɪɡˌzæmɪˈneɪʃən/"},
+        {word:"achievement",chinese:"成就",phonetic:"/əˈtʃiːvmənt/"},
+        {word:"goal",chinese:"目标",phonetic:"/ɡoʊl/"},
+        {word:"dream",chinese:"梦想",phonetic:"/driːm/"},
+        {word:"future",chinese:"未来",phonetic:"/ˈfjuːtʃər/"},
+        {word:"career",chinese:"职业",phonetic:"/kəˈrɪr/"},
+        {word:"profession",chinese:"专业",phonetic:"/prəˈfeʃən/"},
+        {word:"occupation",chinese:"职业",phonetic:"/ˌɑːkjuˈpeɪʃən/"},
+        {word:"employment",chinese:"就业",phonetic:"/ɪmˈplɔɪmənt/"},
+        {word:"unemployment",chinese:"失业",phonetic:"/ˌʌnɪmˈplɔɪmənt/"},
+        {word:"interview",chinese:"面试",phonetic:"/ˈɪntərvjuː/"},
+        {word:"qualification",chinese:"资格",phonetic:"/ˌkwɑːlɪfɪˈkeɪʃən/"},
+        {word:"skill",chinese:"技能",phonetic:"/skɪl/"},
+        {word:"ability",chinese:"能力",phonetic:"/əˈbɪləti/"},
+        {word:"competence",chinese:"能力",phonetic:"/ˈkɑːmpɪtəns/"}
+    ]},
+    "12_复习":{name:"高三英语复习",words:[
+        {word:"virtual",chinese:"虚拟的",phonetic:"/ˈvɜːrtʃuəl/"},
+        {word:"artificial",chinese:"人工的",phonetic:"/ˌɑːrtɪˈfɪʃəl/"},
+        {word:"intelligence",chinese:"智力",phonetic:"/ɪnˈtelɪdʒəns/"},
+        {word:"algorithm",chinese:"算法",phonetic:"/ˈælɡərɪðəm/"},
+        {word:"technology",chinese:"技术",phonetic:"/tekˈnɑːlədʒi/"},
+        {word:"automation",chinese:"自动化",phonetic:"/ˌɔːtəˈmeɪʃən/"},
+        {word:"economy",chinese:"经济",phonetic:"/ɪˈkɑːnəmi/"},
+        {word:"globalization",chinese:"全球化",phonetic:"/ˌɡloʊbələˈzeɪʃən/"},
+        {word:"sustainable",chinese:"可持续的",phonetic:"/səˈsteɪnəbəl/"},
+        {word:"renewable",chinese:"可再生的",phonetic:"/rɪˈnuːəbəl/"},
+        {word:"environment",chinese:"环境",phonetic:"/ɪnˈvaɪrənmənt/"},
+        {word:"pollution",chinese:"污染",phonetic:"/pəˈluːʃən/"},
+        {word:"climate",chinese:"气候",phonetic:"/ˈklaɪmət/"},
+        {word:"emission",chinese:"排放",phonetic:"/ɪˈmɪʃən/"},
+        {word:"carbon",chinese:"碳",phonetic:"/ˈkɑːrbən/"},
+        {word:"footprint",chinese:"足迹",phonetic:"/ˈfʊtprɪnt/"},
+        {word:"biodiversity",chinese:"生物多样性",phonetic:"/ˌbaɪoʊdaɪˈvɜːrsəti/"},
+        {word:"ecosystem",chinese:"生态系统",phonetic:"/ˈiːkoʊsɪstəm/"},
+        {word:"responsibility",chinese:"责任",phonetic:"/rɪˌspɑːnsəˈbɪləti/"},
+        {word:"initiative",chinese:"倡议",phonetic:"/ɪˈnɪʃətɪv/"},
+        {word:"substitute",chinese:"替代品",phonetic:"/ˈsʌbstɪtuːt/"},
+        {word:"alternative",chinese:"替代的",phonetic:"/ɔːlˈtɜːrnətɪv/"},
+        {word:"communication",chinese:"交流",phonetic:"/kəˌmjuːnɪˈkeɪʃən/"},
+        {word:"collaboration",chinese:"合作",phonetic:"/kəˌlæbəˈreɪʃən/"},
+        {word:"competition",chinese:"竞争",phonetic:"/ˌkɑːmpɪˈtɪʃən/"},
+        {word:"cooperation",chinese:"合作",phonetic:"/koʊˌɑːpəˈreɪʃən/"},
+        {word:"relationship",chinese:"关系",phonetic:"/rɪˈleɪʃənʃɪp/"},
+        {word:"negotiation",chinese:"谈判",phonetic:"/nɪˌɡoʊʃiˈeɪʃən/"},
+        {word:"compromise",chinese:"妥协",phonetic:"/ˈkɑːmprəmaɪz/"},
+        {word:"persuasion",chinese:"说服",phonetic:"/pərˈsweɪʒən/"},
+        {word:"argument",chinese:"争论",phonetic:"/ˈɑːrɡjumənt/"},
+        {word:"debate",chinese:"辩论",phonetic:"/dɪˈbeɪt/"},
+        {word:"discussion",chinese:"讨论",phonetic:"/dɪˈskʌʃən/"},
+        {word:"conclusion",chinese:"结论",phonetic:"/kənˈkluːʒən/"},
+        {word:"summary",chinese:"总结",phonetic:"/ˈsʌməri/"},
+        {word:"analysis",chinese:"分析",phonetic:"/əˈnæləsɪs/"},
+        {word:"evaluation",chinese:"评估",phonetic:"/ɪˌvæljuˈeɪʃən/"},
+        {word:"perspective",chinese:"观点",phonetic:"/pərˈspektɪv/"},
+        {word:"approach",chinese:"方法",phonetic:"/əˈproʊtʃ/"}
     ]}
 };
 
 const achievementsList = [
     {id:'first',icon:'1',title:'初次打卡',desc:'完成首次打卡',req:1},
     {id:'week',icon:'7',title:'一周坚持',desc:'连续7天',req:7},
-    {id:'points100',icon:'100',title:'初露锋芒',desc:'100积分',req:100,type:'points'},
+    {id:'month',icon:'30',title:'一月坚持',desc:'连续30天',req:30},
+    {id:'words100',icon:'100',title:'单词达人',desc:'学习100个单词',req:100,type:'words'},
+    {id:'points500',icon:'500',title:'积分达人',desc:'获得500积分',req:500,type:'points'},
     {id:'level5',icon:'5',title:'五级学者',desc:'达到5级',req:5,type:'level'}
 ];
 
-const shopItems = [
-    {id:'avatar1',icon:'A',title:'头像框A',price:100,type:'avatar'},
-    {id:'theme1',icon:'T',title:'深色主题',price:500,type:'theme'}
-];
+const gradeNames = {"3":"小学三年级","4":"小学四年级","5":"小学五年级","6":"小学六年级","7":"初中一年级","8":"初中二年级","9":"初中三年级","10":"高中一年级","11":"高中二年级","12":"高中三年级"};
 
-const gradeNames = ["小学一年级","小学二年级","小学三年级","小学四年级","小学五年级","小学六年级","初中一年级","初中二年级","初中三年级","高中一年级","高中二年级","高中三年级"];
-
-let appState = {currentUser:null,role:null,children:[],plans:[],achievements:[],tasks:[]};
+let appState = {currentUser:null,role:null,children:[],plans:[],tasks:[],wordsLearned:0,practiceHistory:[]};
 
 function loadData(){
-    const saved=localStorage.getItem('studyAppData');
+    const saved=localStorage.getItem('studyAppData2');
     if(saved){
         try{appState={...appState,...JSON.parse(saved)};}catch(e){}
     }
@@ -223,12 +989,11 @@ function loadData(){
         document.getElementById('mainApp').classList.add('active');
         updateDashboard();
         renderTasks();
-        renderCheckinHistory();
+        renderCheckinCalendar();
         renderPlanList();
-        renderKnowledge();
         renderAchievements();
-        renderShop();
         renderChildList();
+        initPractice();
     }
 }
 
@@ -237,38 +1002,33 @@ function selectRole(role){
     if(!name||!name.trim()) return;
     appState.role=role;
     appState.currentUser=name.trim();
-    if(role==='student'){
-        appState.children=[{id:Date.now(),name:name.trim(),grade:5,semester:2,age:11,points:0,level:1,exp:0,streak:0,completedUnits:0,avatar:name.trim().charAt(0)}];
-    }
     saveData();
-    showMainApp();
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainApp').classList.add('active');
+    if(role==='parent'){
+        openAddChildModal();
+    }
+    updateDashboard();
+    renderTasks();
+    renderCheckinCalendar();
+    renderPlanList();
+    renderAchievements();
+    renderChildList();
+    initPractice();
 }
 
 function saveData(){
-    localStorage.setItem('studyAppData',JSON.stringify(appState));
-}
-
-function showMainApp(){
-    document.getElementById('welcomeScreen').classList.add('hidden');
-    document.getElementById('mainApp').classList.add('active');
-    document.getElementById('userName').textContent=appState.currentUser;
-    document.getElementById('userRole').textContent=appState.role==='parent'?'家长':'学生';
-    updateDashboard();
-    renderTasks();
-    renderCheckinHistory();
-    renderPlanList();
-    renderKnowledge();
-    renderAchievements();
-    renderShop();
-    renderChildList();
+    localStorage.setItem('studyAppData2',JSON.stringify(appState));
 }
 
 function updateDashboard(){
     const child=appState.children[0]||{};
+    document.getElementById('userName').textContent=appState.currentUser;
+    document.getElementById('userRole').textContent=appState.role==='parent'?'家长':'学生';
     document.getElementById('streakDays').textContent=child.streak||0;
     document.getElementById('totalPoints').textContent=child.points||0;
     document.getElementById('userLevel').textContent='Lv.'+(child.level||1);
-    document.getElementById('completedUnits').textContent=child.completedUnits||0;
+    document.getElementById('totalWords').textContent=appState.wordsLearned||0;
     document.getElementById('userBadge').textContent='Lv.'+(child.level||1);
 }
 
@@ -278,79 +1038,75 @@ function switchTab(el,tabId){
     el.classList.add('active');
     document.getElementById(tabId).classList.add('active');
     if(tabId==='knowledge') renderKnowledge();
-    if(tabId==='quiz') renderQuiz();
+    if(tabId==='practice') initPractice();
     if(tabId==='achievements') renderAchievements();
-    if(tabId==='shop') renderShop();
 }
 
 function doCheckin(){
     const child=appState.children[0];
     if(!child){alert('请先添加孩子');return;}
-    const today=new Date().toDateString();
+    const today=new Date().toISOString().split('T')[0];
     const already=appState.tasks.some(t=>t.date===today&&t.type==='checkin');
     if(already){
-        document.getElementById('checkinResult').innerHTML='<div class="checkin-result already">今日已打卡！</div>';
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result already">今日已打卡!</div>';
         return;
     }
-    appState.tasks.push({date:today,type:'checkin',points:10});
+    appState.tasks.push({date:today,type:'checkin',points:15});
     child.streak=(child.streak||0)+1;
-    const points=10+Math.min(child.streak*2,20);
+    const points=15+Math.min(child.streak,20);
     child.points=(child.points||0)+points;
     child.exp=(child.exp||0)+points;
     if(child.exp>=100){
         child.level=(child.level||1)+1;
         child.exp=child.exp-100;
-        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功！+'+points+'积分 恭喜升级到Lv.'+child.level+'!</div>';
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功!+'+points+'积分 恭喜升级!</div>';
     }else{
-        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功！+'+points+'积分</div>';
+        document.getElementById('checkinResult').innerHTML='<div class="checkin-result success">打卡成功!+'+points+'积分</div>';
     }
     saveData();
     updateDashboard();
-    renderCheckinHistory();
+    renderCheckinCalendar();
+    renderTasks();
 }
 
-function renderCheckinHistory(){
-    const container=document.getElementById('checkinHistory');
-    const checkins=appState.tasks.filter(t=>t.type==='checkin').slice(-10).reverse();
-    if(checkins.length===0){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无打卡记录</p>';return;}
-    let html='';
-    checkins.forEach(c=>{
-        const d=new Date(c.date);
-        html+=`<div class="task-item">
-            <div class="task-checkbox completed">&#10004;</div>
-            <div class="task-info">
-                <div style="font-weight:500">${d.getMonth()+1}月${d.getDate()}日</div>
-                <div style="font-size:0.85rem;color:#666">连续打卡${appState.children[0]?.streak||0}天</div>
-            </div>
-            <span class="task-points">+${c.points||10}</span>
-        </div>`;
-    });
-    container.innerHTML=html;
+function renderCheckinCalendar(){
+    const now=new Date();
+    const year=now.getFullYear();
+    const month=now.getMonth();
+    document.getElementById('checkinMonth').textContent=year+'年'+(month+1)+'月';
+    const firstDay=new Date(year,month,1).getDay();
+    const daysInMonth=new Date(year,month+1,0).getDate();
+    const checkedDates=appState.tasks.filter(t=>t.type==='checkin').map(t=>t.date);
+    let html='<div class="calendar-grid"><div class="weekday">日</div><div class="weekday">一</div><div class="weekday">二</div><div class="weekday">三</div><div class="weekday">四</div><div class="weekday">五</div><div class="weekday">六</div>';
+    for(let i=0;i<firstDay;i++)html+='<div class="calendar-day empty"></div>';
+    const today=now.toISOString().split('T')[0];
+    for(let d=1;d<=daysInMonth;d++){
+        const dateStr=year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+        const isChecked=checkedDates.includes(dateStr);
+        const isToday=dateStr===today;
+        html+='<div class="calendar-day'+(isChecked?' checked':'')+(isToday?' today':'')+'">'+d+'</div>';
+    }
+    html+='</div>';
+    document.getElementById('checkinCalendar').innerHTML=html;
 }
 
 function renderTasks(){
     const child=appState.children[0];
     const container=document.getElementById('taskList');
-    if(!child||appState.plans.length===0){
-        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无学习任务，请先创建学习计划</p>';
+    if(!child){
+        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">请先添加孩子</p>';
         return;
     }
+    const today=new Date().toISOString().split('T')[0];
+    const todayTasks=[];
     const plan=appState.plans.find(p=>p.active);
-    if(!plan){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">暂无进行中的学习任务</p>';return;}
-    const key=plan.subject+'_'+plan.grade+'_'+plan.semester;
-    const data=knowledgeDB[key];
-    if(!data){container.innerHTML='<p style="text-align:center;color:#666;padding:20px">该课程暂无可用内容</p>';return;}
+    if(plan){
+        todayTasks.push({title:'学习'+plan.dailyWords+'个英语单词',subject:'英语',points:20,completed:false,type:'word'});
+    }
+    todayTasks.push({title:'每日打卡',subject:'综合',points:15,completed:appState.tasks.some(t=>t.date===today&&t.type==='checkin'),type:'checkin'});
     let html='';
-    data.units.slice(0,5).forEach((unit,idx)=>{
-        const isCompleted=idx<(plan.completedUnits||0);
-        html+=`<div class="task-item">
-            <div class="task-checkbox ${isCompleted?'completed':''}">${isCompleted?'&#10004;':''}</div>
-            <div class="task-info">
-                <div style="font-weight:500">${unit.name}</div>
-                <div style="font-size:0.85rem;color:#666">${plan.subject} | ${unit.items.length}个知识点</div>
-            </div>
-            <span class="task-points">${isCompleted?'&#10004;':'+'}${unit.items.length*5}</span>
-        </div>`;
+    todayTasks.forEach(t=>{
+        html+='<div class="task-item"><div class="task-checkbox '+(t.completed?'completed':'')+'">'+(t.completed?'&#10004;':'')+'</div><div class="task-info"><div style="font-weight:500">'+t.title+'</div><div style="font-size:0.85rem;color:#666">'+t.subject+'</div></div><span class="task-points">+'+(t.completed?'&#10004;':'+')+t.points+'</span></div>';
     });
     container.innerHTML=html;
 }
@@ -360,31 +1116,28 @@ function openAddChildModal(){
     document.getElementById('childModalTitle').textContent='添加孩子';
     document.getElementById('childName').value='';
     document.getElementById('childGrade').value='5';
-    document.getElementById('childSemester').value='2';
-    document.getElementById('childAge').value='11';
+    document.getElementById('childCycle').value='30';
     document.getElementById('childModal').classList.add('active');
-}
-
-function closeChildModal(){
-    document.getElementById('childModal').classList.remove('active');
 }
 
 function saveChild(){
     const name=document.getElementById('childName').value.trim();
     const grade=document.getElementById('childGrade').value;
-    const semester=document.getElementById('childSemester').value;
-    const age=document.getElementById('childAge').value;
-    if(!name){alert('请输入昵称');return;}
+    const cycle=parseInt(document.getElementById('childCycle').value);
+    if(!name){alert('请输入孩子姓名');return;}
     if(appState.editingChildId){
         const c=appState.children.find(x=>x.id===appState.editingChildId);
-        if(c){c.name=name;c.grade=parseInt(grade);c.semester=parseInt(semester);c.age=parseInt(age)||0;c.avatar=name.charAt(0);}
+        if(c){c.name=name;c.grade=parseInt(grade);c.cycle=cycle;c.avatar=name.charAt(0);}
     }else{
-        appState.children.push({id:Date.now(),name,grade:parseInt(grade),semester:parseInt(semester),age:parseInt(age)||0,points:0,level:1,exp:0,streak:0,completedUnits:0,avatar:name.charAt(0)});
+        appState.children.push({id:Date.now(),name,grade:parseInt(grade),cycle,points:0,level:1,exp:0,streak:0,avatar:name.charAt(0)});
+        const child=appState.children[appState.children.length-1];
+        appState.plans.push({id:Date.now(),name:'英语学习计划',grade:child.grade,dailyWords:10,days:child.cycle,active:true,startDate:new Date().toISOString().split('T')[0]});
     }
     saveData();
     renderChildList();
+    renderTasks();
     closeChildModal();
-    alert('保存成功！');
+    alert('保存成功!');
 }
 
 function editChild(id){
@@ -394,8 +1147,7 @@ function editChild(id){
     document.getElementById('childModalTitle').textContent='编辑孩子';
     document.getElementById('childName').value=c.name;
     document.getElementById('childGrade').value=c.grade||5;
-    document.getElementById('childSemester').value=c.semester||2;
-    document.getElementById('childAge').value=c.age||11;
+    document.getElementById('childCycle').value=c.cycle||30;
     document.getElementById('childModal').classList.add('active');
 }
 
@@ -414,31 +1166,21 @@ function renderChildList(){
     }
     let html='';
     appState.children.forEach(c=>{
-        html+=`<div class="child-card">
-            <div style="display:flex;align-items:center;gap:15px">
-                <div class="child-avatar">${c.avatar||c.name.charAt(0)}</div>
-                <div>
-                    <h3>${c.name}</h3>
-                    <div style="font-size:0.9rem;color:#666">${gradeNames[c.grade-1]||'未设'} ${c.semester===1?'上':'下'}学期 | ${c.age?c.age+'岁':''}</div>
-                    <div style="font-size:0.85rem;color:#F59E0B;margin-top:5px">积分:${c.points} | Lv.${c.level} | 连续:${c.streak}天 | 单元:${c.completedUnits||0}</div>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary" onclick="editChild(${c.id})">编辑</button>
-                <button class="btn btn-danger" onclick="deleteChild(${c.id})">删除</button>
-            </div>
-        </div>`;
+        html+='<div class="child-card"><div style="display:flex;align-items:center;gap:15px"><div class="child-avatar">'+(c.avatar||c.name.charAt(0))+'</div><div><h3>'+c.name+'</h3><div style="font-size:0.9rem;color:#666">'+gradeNames[c.grade]||'未设'+'</div><div style="font-size:0.85rem;color:#F59E0B;margin-top:5px">积分:'+(c.points||0)+' | Lv.'+(c.level||1)+' | 连续'+(c.streak||0)+'天</div></div></div><div><button class="btn btn-primary" onclick="editChild('+c.id+')">编辑</button><button class="btn btn-danger" onclick="deleteChild('+c.id+')">删除</button></div></div>';
     });
     container.innerHTML=html;
 }
 
+function closeChildModal(){
+    document.getElementById('childModal').classList.remove('active');
+}
+
 function openPlanModal(){
+    const child=appState.children[0];
     document.getElementById('planName').value='';
-    document.getElementById('planSubject').value='英语';
-    document.getElementById('planGrade').value='5';
-    document.getElementById('planSemester').value='2';
-    document.getElementById('dailyUnits').value='2';
-    document.getElementById('planDays').value='30';
+    document.getElementById('planGrade').value=child?child.grade:'5';
+    document.getElementById('dailyWords').value='10';
+    document.getElementById('planDays').value=child?child.cycle:'30';
     document.getElementById('planModal').classList.add('active');
 }
 
@@ -447,33 +1189,27 @@ function closePlanModal(){
 }
 
 function createPlan(){
-    const name=document.getElementById('planName').value.trim();
-    const subject=document.getElementById('planSubject').value;
+    const name=document.getElementById('planName').value.trim()||'英语学习计划';
     const grade=parseInt(document.getElementById('planGrade').value);
-    const semester=parseInt(document.getElementById('planSemester').value);
-    const dailyUnits=parseInt(document.getElementById('dailyUnits').value)||2;
+    const dailyWords=parseInt(document.getElementById('dailyWords').value)||10;
     const days=parseInt(document.getElementById('planDays').value)||30;
-    const planName=name||gradeNames[grade-1]+subject+(semester===1?'上':'下')+'学期学习计划';
-    const plan={id:Date.now(),name:planName,subject,grade,semester,dailyUnits,days,active:true,completedUnits:0,startDate:new Date().toISOString().split('T')[0]};
-    if(appState.plans.length>0) appState.plans.forEach(p=>p.active=false);
+    const plan={id:Date.now(),name,grade,dailyWords,days,active:true,startDate:new Date().toISOString().split('T')[0]};
+    appState.plans.forEach(p=>p.active=false);
     appState.plans.push(plan);
     saveData();
     renderPlanList();
     renderTasks();
     closePlanModal();
-    alert('计划创建成功！');
+    alert('计划创建成功!');
 }
 
 function generateSmartPlan(){
     const child=appState.children[0];
     if(!child){alert('请先添加孩子');return;}
-    const subjects=['语文','数学','英语'];
-    const subject=subjects[Math.floor(Math.random()*subjects.length)];
     document.getElementById('planName').value='';
-    document.getElementById('planSubject').value=subject;
-    document.getElementById('planGrade').value=child.grade||5;
-    document.getElementById('planSemester').value=child.semester||2;
-    document.getElementById('planDays').value='30';
+    document.getElementById('planGrade').value=child.grade;
+    document.getElementById('dailyWords').value='10';
+    document.getElementById('planDays').value=child.cycle||30;
     openPlanModal();
 }
 
@@ -486,17 +1222,7 @@ function renderPlanList(){
     let html='';
     appState.plans.forEach(p=>{
         const badgeColor=p.active?'#10B981':'#6B7280';
-        html+=`<div class="plan-card">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-                <div>
-                    <h3>${p.name}</h3>
-                    <div style="font-size:0.9rem;color:#666">${gradeNames[p.grade-1]} ${p.semester===1?'上':'下'}学期 | 每天${p.dailyUnits}个单元 | ${p.days}天</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width:${Math.min((p.completedUnits||0)*10,100)}%"></div></div>
-                </div>
-                <span class="plan-badge" style="background:${badgeColor};color:white">${p.active?'进行中':'已暂停'}</span>
-            </div>
-            <button class="btn ${p.active?'btn-secondary':'btn-primary'}" style="margin-top:10px" onclick="setActivePlan(${p.id})">${p.active?'已选':'开始'}</button>
-        </div>`;
+        html+='<div class="plan-card"><div style="display:flex;justify-content:space-between;align-items:center"><div><h3>'+p.name+'</h3><div style="font-size:0.9rem;color:#666">'+gradeNames[p.grade]+' | 每天'+p.dailyWords+'个单词 | '+p.days+'天</div></div><span class="btn" style="background:'+badgeColor+';color:white"> '+(p.active?'进行中':'已暂停')+'</span></div><button class="btn '+(p.active?'btn-secondary':'btn-primary')+'" style="margin-top:10px" onclick="setActivePlan('+p.id+')">'+(p.active?'已选':'开始')+'</button></div>';
     });
     container.innerHTML=html;
 }
@@ -511,131 +1237,139 @@ function setActivePlan(id){
 function renderKnowledge(){
     const container=document.getElementById('knowledgeContent');
     const filterGrade=document.getElementById('filterGrade').value;
-    const filterSubject=document.getElementById('filterSubject').value;
-    const filterSemester=document.getElementById('filterSemester').value;
+    const filterBook=document.getElementById('filterBook').value;
     let html='<div class="knowledge-grid">';
-    for(const[key,data]of Object.entries(knowledgeDB)){
-        const[subject,gradeStr,semesterStr]=key.split('_');
-        const grade=parseInt(gradeStr);
-        const semester=parseInt(semesterStr);
-        if(filterSubject&&filterSubject!==subject)continue;
+    for(const[key,data]of Object.entries(englishWords)){
+        const grade=parseInt(key.split('_')[0]);
         if(filterGrade){
-            if(filterGrade==='1-6'&&(grade<1||grade>6))continue;
-            if(filterGrade==='7-9'&&(grade<7||grade>9))continue;
-            if(filterGrade==='10-12'&&(grade<10||grade>12))continue;
+            if(filterGrade=='3-6'&&(grade<3||grade>6))continue;
+            if(filterGrade=='7-9'&&(grade<7||grade>9))continue;
+            if(filterGrade=='10-12'&&(grade<10||grade>12))continue;
         }
-        if(filterSemester&&filterSemester!=semester)continue;
-        html+=`<div class="knowledge-card" onclick="showUnits('${key}')">
-            <h3>${data.name}</h3>
-            <p style="color:#666;font-size:0.9rem;margin-top:5px">${data.units.length}个单元</p>
-        </div>`;
+        html+='<div class="knowledge-card" onclick="showWords(\''+key+'\')"><h3>'+data.name+'</h3><p style="color:#666;font-size:0.9rem;margin-top:5px">'+data.words.length+'个单词</p></div>';
     }
     html+='</div>';
     container.innerHTML=html;
 }
 
-function showUnits(key){
-    const data=knowledgeDB[key];
+function showWords(key){
+    const data=englishWords[key];
     const container=document.getElementById('knowledgeContent');
-    let html=`<div style="margin-bottom:20px"><button class="btn btn-secondary" onclick="renderKnowledge()">返回知识库</button></div>`;
-    html+='<div class="unit-list">';
-    data.units.forEach(unit=>{
-        html+=`<div class="unit-item" onclick="startLearning('${key}','${unit.id}')">
-            <strong>${unit.name}</strong>
-            <span style="color:#666;margin-left:10px">${unit.items.length}个知识点</span>
-        </div>`;
+    let html='<div style="margin-bottom:20px"><button class="btn btn-secondary" onclick="renderKnowledge()">返回词库</button></div><div class="unit-list">';
+    data.words.forEach(w=>{
+        html+='<div class="unit-item"><div style="display:flex;justify-content:space-between"><div><strong>'+w.word+'</strong> <span style="color:#666">'+w.phonetic+'</span></div><span style="color:#4F46E5">'+w.chinese+'</span></div></div>';
     });
     html+='</div>';
     container.innerHTML=html;
 }
 
-function startLearning(key,unitId){
-    const data=knowledgeDB[key];
-    const unit=data.units.find(u=>u.id===unitId);
-    const container=document.getElementById('knowledgeContent');
-    let html=`<div style="margin-bottom:20px"><button class="btn btn-secondary" onclick="showUnits('${key}')">返回单元列表</button></div>`;
-    html+=`<div class="learning-content"><h3>${unit.name}</h3>`;
-    unit.items.forEach((item,idx)=>{
-        html+=`<div style="margin-top:15px;padding:15px;background:white;border-radius:8px">
-            <p style="font-weight:500">${item.question}</p>
-            <input type="text" class="quiz-input" id="answer${idx}" placeholder="请输入答案">
-            <button class="btn btn-primary" style="margin-top:10px" onclick="checkAnswer(${idx},'${item.answer}',${item.points})">提交答案</button>
-            <div id="result${idx}" style="margin-top:10px"></div>
-        </div>`;
-    });
-    html+=`<button class="btn btn-success" style="width:100%;margin-top:20px" onclick="completeUnit('${key}','${unitId}')">完成本单元学习</button></div>`;
-    container.innerHTML=html;
-}
+let practiceWords=[];
+let currentWordIndex=0;
+let correctCount=0;
+let wrongCount=0;
 
-function checkAnswer(idx,answer,points){
-    const userAnswer=document.getElementById('answer'+idx).value.trim();
-    const resultDiv=document.getElementById('result'+idx);
-    if(userAnswer===answer){
-        resultDiv.innerHTML=`<span style="color:#10B981">正确! +${points}积分</span>`;
-    }else{
-        resultDiv.innerHTML=`<span style="color:#EF4444">错误，正确答案是: ${answer}</span>`;
-    }
-}
-
-function completeUnit(key,unitId){
-    const child=appState.children[0];
-    if(!child)return;
-    const plan=appState.plans.find(p=>p.active);
-    if(plan){plan.completedUnits=(plan.completedUnits||0)+1;}
-    child.completedUnits=(child.completedUnits||0)+1;
-    const bonus=20;
-    child.points=(child.points||0)+bonus;
-    child.exp=(child.exp||0)+bonus;
-    if(child.exp>=100){
-        child.level=(child.level||1)+1;
-        child.exp=child.exp-100;
-    }
-    saveData();
-    updateDashboard();
-    renderTasks();
-    showUnits(key);
-    alert('单元完成! +'+bonus+'积分');
-}
-
-function renderQuiz(){
-    const container=document.getElementById('quizContent');
+function initPractice(){
     const plan=appState.plans.find(p=>p.active);
     if(!plan){
-        container.innerHTML='<div style="background:white;padding:30px;border-radius:15px;text-align:center"><p>还没有学习计划</p><button class="btn btn-primary" onclick="switchTab(document.querySelector(\'[data-tab=plans]\'),\'plans\');generateSmartPlan();">去创建学习计划</button></div>';
+        document.getElementById('practiceInfo').textContent='请先创建学习计划';
+        document.getElementById('startPracticeBtn').disabled=true;
         return;
     }
-    const key=plan.subject+'_'+plan.grade+'_'+plan.semester;
-    const data=knowledgeDB[key];
-    if(!data){
-        container.innerHTML='<p style="text-align:center;color:#666;padding:20px">该课程暂无可用测试</p>';
-        return;
+    document.getElementById('practiceInfo').textContent=gradeNames[plan.grade]+' | 每日'+plan.dailyWords+'个单词';
+    document.getElementById('startPracticeBtn').disabled=false;
+    document.getElementById('wordDisplay').textContent='点击开始练习';
+    document.getElementById('wordInput').disabled=true;
+    document.getElementById('wordInput').value='';
+    document.getElementById('nextWordBtn').style.display='none';
+    document.getElementById('correctCount').textContent='0';
+    document.getElementById('wrongCount').textContent='0';
+    document.getElementById('remainCount').textContent='0';
+    currentWordIndex=0;
+    correctCount=0;
+    wrongCount=0;
+    
+    practiceWords=[];
+    const gradeKey=plan.grade;
+    for(const[key,data]of Object.entries(englishWords)){
+        const g=parseInt(key.split('_')[0]);
+        if(g===gradeKey||(gradeKey>=3&&g>=3&&g<=6&&gradeKey>=3&&gradeKey<=6)||(gradeKey>=7&&g>=7&&g<=9&&gradeKey>=7&&gradeKey<=9)||(gradeKey>=10&&g>=10&&gradeKey<=12)){
+            if(g===gradeKey){
+                practiceWords.push(...data.words.slice(0,plan.dailyWords));
+                break;
+            }
+        }
     }
-    const units=data.units.slice(0,3);
-    let html='<div style="background:white;padding:20px;border-radius:15px">';
-    let quizId=0;
-    units.forEach(unit=>{
-        unit.items.slice(0,2).forEach(item=>{
-            html+=`<div style="margin-bottom:20px;padding:15px;border:1px solid #e5e7eb;border-radius:10px">
-                <p style="font-weight:500;margin-bottom:10px">${item.question}</p>
-                <input type="text" class="quiz-input" id="quiz${quizId}" placeholder="请输入答案">
-                <button class="btn btn-secondary" style="margin-top:8px" onclick="checkQuizAnswer(${quizId},'${item.answer}',${item.points})">提交</button>
-                <div id="quizResult${quizId}" style="margin-top:8px"></div>
-            </div>`;
-            quizId++;
-        });
-    });
-    html+='</div>';
-    container.innerHTML=html;
+    if(practiceWords.length===0){
+        const allGrades=Object.keys(englishWords);
+        for(let g=3;g<=plan.grade;g++){
+            const key=g+'_上';
+            if(englishWords[key])practiceWords.push(...englishWords[key].words.slice(0,Math.ceil(plan.dailyWords/3)));
+            const key2=g+'_下';
+            if(englishWords[key2])practiceWords.push(...englishWords[key2].words.slice(0,Math.ceil(plan.dailyWords/3)));
+        }
+    }
+    practiceWords=practiceWords.slice(0,plan.dailyWords);
+    practiceWords.sort(()=>Math.random()-0.5);
+    document.getElementById('remainCount').textContent=practiceWords.length;
 }
 
-function checkQuizAnswer(id,answer,points){
-    const userAnswer=document.getElementById('quiz'+id).value.trim();
-    const resultDiv=document.getElementById('quizResult'+id);
-    if(userAnswer===answer){
-        resultDiv.innerHTML=`<span style="color:#10B981">正确! +${points}积分</span>`;
-    }else{
-        resultDiv.innerHTML=`<span style="color:#EF4444">错误</span>`;
+function startPractice(){
+    if(practiceWords.length===0){
+        alert('请先创建学习计划');
+        return;
     }
+    currentWordIndex=0;
+    showCurrentWord();
+    document.getElementById('wordInput').disabled=false;
+    document.getElementById('wordInput').focus();
+    document.getElementById('nextWordBtn').style.display='inline-block';
+}
+
+function showCurrentWord(){
+    if(currentWordIndex>=practiceWords.length){
+        finishPractice();
+        return;
+    }
+    const word=practiceWords[currentWordIndex];
+    document.getElementById('wordDisplay').textContent=word.word;
+    document.getElementById('wordInput').value='';
+    document.getElementById('remainCount').textContent=practiceWords.length-currentWordIndex;
+}
+
+function nextWord(){
+    const userAnswer=document.getElementById('wordInput').value.trim().toLowerCase();
+    const correctAnswer=practiceWords[currentWordIndex].word.toLowerCase();
+    if(userAnswer===correctAnswer){
+        correctCount++;
+        appState.wordsLearned++;
+        document.getElementById('correctCount').textContent=correctCount;
+    }else{
+        wrongCount++;
+        document.getElementById('wrongCount').textContent=wrongCount;
+    }
+    currentWordIndex++;
+    saveData();
+    showCurrentWord();
+}
+
+function finishPractice(){
+    const child=appState.children[0];
+    if(child){
+        const bonus=correctCount*5;
+        child.points=(child.points||0)+bonus;
+        child.exp=(child.exp||0)+bonus;
+        if(child.exp>=100){
+            child.level=(child.level||1)+1;
+            child.exp=child.exp-100;
+        }
+        saveData();
+        updateDashboard();
+    }
+    document.getElementById('wordDisplay').textContent='练习完成!';
+    document.getElementById('wordInput').disabled=true;
+    document.getElementById('nextWordBtn').style.display='none';
+    document.getElementById('remainCount').textContent='0';
+    renderAchievements();
 }
 
 function renderAchievements(){
@@ -646,33 +1380,16 @@ function renderAchievements(){
         let unlocked=false;
         if(a.type==='points'&&(child.points||0)>=a.req)unlocked=true;
         else if(a.type==='level'&&(child.level||0)>=a.req)unlocked=true;
+        else if(a.type==='words'&&(appState.wordsLearned||0)>=a.req)unlocked=true;
         else if(!a.type&&(child.streak||0)>=a.req)unlocked=true;
-        html+=`<div class="achievement-card ${unlocked?'':'locked'}">
-            <div style="font-size:36px;margin-bottom:10px">${a.icon}</div>
-            <h4>${a.title}</h4>
-            <p style="color:#666;font-size:0.85rem">${a.desc}</p>
-        </div>`;
-    });
-    container.innerHTML=html;
-}
-
-function renderShop(){
-    const container=document.getElementById('shopList');
-    let html='';
-    shopItems.forEach(item=>{
-        html+=`<div class="shop-card">
-            <div style="font-size:48px;margin-bottom:10px">${item.icon}</div>
-            <h4>${item.title}</h4>
-            <div style="background:linear-gradient(135deg,#F59E0B,#FBBF24);color:white;padding:5px 15px;border-radius:15px;display:inline-block;margin:10px 0">${item.price}积分</div>
-            <button class="btn btn-primary">购买</button>
-        </div>`;
+        html+='<div class="achievement-card '+(unlocked?'':'locked')+'"><div style="font-size:36px;margin-bottom:10px">'+a.icon+'</div><h4>'+a.title+'</h4><p style="color:#666;font-size:0.85rem">'+a.desc+'</p></div>';
     });
     container.innerHTML=html;
 }
 
 function logout(){
     if(confirm('确定要退出登录吗?')){
-        localStorage.removeItem('studyAppData');
+        localStorage.removeItem('studyAppData2');
         location.reload();
     }
 }
